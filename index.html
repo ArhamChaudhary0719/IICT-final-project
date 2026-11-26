@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CarePulse Medical Clinic | Home</title>
-  <meta name="description" content="CarePulse Medical Clinic — find trusted specialists, explore doctor profiles, and schedule your visit online.">
+  <meta name="description" content="CarePulse Medical Clinic — compassionate primary and specialty care, diagnostics, and experienced physicians.">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -48,9 +48,9 @@
       <nav aria-label="Primary navigation">
         <ul class="nav-menu" id="navMenu">
           <li><a class="nav-link is-active" href="index.html" aria-current="page">Home</a></li>
-          <li><a class="nav-link" href="finddoctor.html">Find Doctor</a></li>
-          <li><a class="nav-link" href="doctorprofile.html">Doctor Profile</a></li>
-          <li><a class="btn btn--primary btn--sm nav-cta" href="finddoctor.html">Book a Doctor</a></li>
+          <li><a class="nav-link" href="#doctors">Our Doctors</a></li>
+          <li><a class="nav-link" href="#departments">Departments</a></li>
+          <li><a class="btn btn--primary btn--sm nav-cta" href="#contact">Contact Clinic</a></li>
         </ul>
       </nav>
     </div>
@@ -63,8 +63,8 @@
           <span class="badge badge--success">Accepting New Patients &amp; Same-Day Visits</span>
           <h1 class="hero__title">Trusted Healthcare Built Around <span>Your Family</span></h1>
           <p class="hero__desc">
-            Search our board-certified physicians by specialty, inspect full doctor profiles and schedules,
-            and reserve an outpatient appointment in seconds.
+            Board-certified physicians, preventive checkups, and on-site diagnostics working together
+            to keep your family healthy under one roof.
           </p>
 
           <form class="hero__search-form" id="homeQuickSearchForm" role="search">
@@ -73,14 +73,14 @@
               class="hero__search-input"
               type="search"
               id="homeQuickSearchInput"
-              placeholder="Search by doctor name, specialty, or symptom..."
+              placeholder="Filter doctors by name, specialty, or condition..."
             >
-            <button type="submit" class="btn btn--primary btn--sm">Find Doctor</button>
+            <button type="submit" class="btn btn--primary btn--sm">Search</button>
           </form>
 
           <div class="hero__actions">
-            <a class="btn btn--primary" href="finddoctor.html">Browse All Doctors</a>
-            <a class="btn btn--secondary" href="doctorprofile.html">View Featured Profile</a>
+            <a class="btn btn--primary" href="#doctors">Meet Our Doctors</a>
+            <a class="btn btn--secondary" href="#departments">Explore Departments</a>
           </div>
           <div class="hero__trust">
             <span>&#10003; On-site Lab &amp; X-Ray</span>
@@ -109,9 +109,9 @@
           <div class="hero__floating-card">
             <div>
               <strong>5 Specialists Available Today</strong>
-              <div style="font-size:0.86rem;color:var(--color-text-muted);">Walk-in &amp; scheduled slots open</div>
+              <div style="font-size:0.86rem;color:var(--color-text-muted);">Walk-in &amp; scheduled visits open</div>
             </div>
-            <a class="btn btn--primary btn--sm" href="finddoctor.html">Find Doctor</a>
+            <a class="btn btn--primary btn--sm" href="#contact">Call Reception</a>
           </div>
         </div>
       </div>
@@ -140,68 +140,55 @@
       </div>
     </section>
 
-    <section class="section section--alt">
+    <section class="section section--alt" id="doctors">
       <div class="container">
         <div class="section-header">
           <span class="section-header__eyebrow">Our Specialists</span>
-          <h2 class="section-header__title">Featured Clinic Doctors</h2>
+          <h2 class="section-header__title">Clinic Doctors</h2>
           <p class="section-header__desc">
-            Select a physician below to view their full profile, weekly clinic schedule, and available appointment slots.
+            Meet our experienced primary care and specialty physicians available across the week.
           </p>
         </div>
 
-        <div class="card-grid" id="homeFeaturedDoctors"></div>
-
-        <div style="margin-top:2rem;text-align:center;">
-          <a class="btn btn--secondary" href="finddoctor.html">View &amp; Filter All Doctors</a>
-        </div>
+        <div class="card-grid" id="homeFeaturedDoctors" aria-live="polite"></div>
       </div>
     </section>
 
-    <section class="section">
+    <section class="section" id="departments">
       <div class="container">
         <div class="section-header section-header--center">
           <span class="section-header__eyebrow">Departments &amp; Care</span>
           <h2 class="section-header__title">How We Care for You</h2>
-          <p class="section-header__desc">Click any specialty to filter matching physicians in our Find Doctor directory.</p>
+          <p class="section-header__desc">Comprehensive outpatient services backed by modern on-site diagnostics.</p>
         </div>
 
         <div class="card-grid">
           <article class="card">
             <h3 class="card__title">General Medicine</h3>
             <p class="card__text">Primary care checkups, diabetes and blood pressure management, and acute adult sick visits.</p>
-            <div class="card__footer">
-              <a href="finddoctor.html?specialty=general-medicine">Find General Doctors &rarr;</a>
-            </div>
           </article>
 
           <article class="card">
             <h3 class="card__title">Cardiology</h3>
             <p class="card__text">Preventive heart care, ECGs, echocardiography, and personalized hypertension treatment.</p>
-            <div class="card__footer">
-              <a href="finddoctor.html?specialty=cardiology">Find Cardiologists &rarr;</a>
-            </div>
           </article>
 
           <article class="card">
             <h3 class="card__title">Pediatrics</h3>
             <p class="card__text">Infant wellness exams, childhood immunizations, asthma care, and school physicals.</p>
-            <div class="card__footer">
-              <a href="finddoctor.html?specialty=pediatrics">Find Pediatricians &rarr;</a>
-            </div>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section section--tight">
+    <section class="section section--tight" id="contact">
       <div class="container">
         <div class="cta-banner">
           <div>
-            <h2 class="cta-banner__title">Need to See a Specialist Soon?</h2>
-            <p class="cta-banner__desc">Filter doctors by specialty or today&rsquo;s availability and book directly from their profile.</p>
+            <h2 class="cta-banner__title">Visit CarePulse Medical Clinic</h2>
+            <p class="cta-banner__desc">420 Wellness Avenue, Suite 200 &bull; Open Mon–Fri 8:00 AM – 8:00 PM, Sat 8:30 AM – 6:00 PM.</p>
           </div>
-          <a class="btn btn--secondary" href="finddoctor.html">Find a Doctor Now</a>
+          <a class="btn btn--secondary" href="tel:+15552348900">Call (555) 234-8900</a>
         </div>
       </div>
     </section>
@@ -217,11 +204,12 @@
           </p>
         </div>
         <div>
-          <h3 class="footer-title">Pages</h3>
+          <h3 class="footer-title">Navigation</h3>
           <ul class="footer-links">
             <li><a href="index.html">Home</a></li>
-            <li><a href="finddoctor.html">Find Doctor</a></li>
-            <li><a href="doctorprofile.html">Doctor Profile</a></li>
+            <li><a href="#doctors">Our Doctors</a></li>
+            <li><a href="#departments">Departments</a></li>
+            <li><a href="#contact">Contact Clinic</a></li>
           </ul>
         </div>
         <div>
