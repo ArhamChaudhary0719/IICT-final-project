@@ -3,228 +3,223 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CarePulse Medical Clinic | Home</title>
-  <meta name="description" content="CarePulse Medical Clinic — compassionate primary and specialty care, diagnostics, and experienced physicians.">
+  <title>DocEase Clinic | Home</title>
+  <meta name="description" content="DocEase Clinic — compassionate care, clinic timings, live search, clinic analysis, and modern outpatient facilities.">
+  <link rel="icon" type="image/jpeg" href="images/logo.jpg">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to main content</a>
 
-  <div class="top-bar">
-    <div class="container top-bar__inner">
-      <div class="top-bar__item">
-        <strong>Urgent Care &amp; Reception:</strong>
-        <a href="tel:+15552348900">(555) 234-8900</a>
-      </div>
-      <div class="top-bar__item">
-        <span>Mon–Fri 8:00 AM – 8:00 PM | Sat 8:30 AM – 6:00 PM | Sun 9:00 AM – 3:00 PM</span>
-      </div>
-    </div>
-  </div>
-
+  <!-- Header: Logo/Name (Left) | Home, FindDoctor, Doctor Profile (Center) | Phone No. (Right) -->
   <header class="site-header">
     <div class="container nav-wrapper">
       <a class="brand" href="index.html">
-        <svg class="brand__logo" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-          <rect width="40" height="40" rx="10" fill="#0d7377"/>
-          <path d="M20 9v22M9 20h22" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/>
-          <circle cx="30" cy="10" r="3" fill="#7be3dc"/>
-        </svg>
+        <img class="brand__logo" src="images/logo.jpg" alt="DocEase Clinic logo">
         <span>
-          CarePulse
-          <span class="brand__sub">Medical Clinic</span>
+          DocEase
+          <span class="brand__sub">Clinic</span>
         </span>
       </a>
 
       <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="navMenu" aria-label="Toggle navigation menu">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-          <line x1="3" y1="6" x2="21" y2="6"></line>
-          <line x1="3" y1="12" x2="21" y2="12"></line>
-          <line x1="3" y1="18" x2="21" y2="18"></line>
-        </svg>
         Menu
       </button>
 
-      <nav aria-label="Primary navigation">
+      <nav class="nav-center" aria-label="Primary navigation">
         <ul class="nav-menu" id="navMenu">
           <li><a class="nav-link is-active" href="index.html" aria-current="page">Home</a></li>
-          <li><a class="nav-link" href="#doctors">Our Doctors</a></li>
-          <li><a class="nav-link" href="#departments">Departments</a></li>
-          <li><a class="btn btn--primary btn--sm nav-cta" href="#contact">Contact Clinic</a></li>
+          <li><a class="nav-link" href="finddoctor.html">FindDoctor</a></li>
+          <li><a class="nav-link" href="doctorprofile.html">Doctor Profile</a></li>
         </ul>
       </nav>
+
+      <a class="nav-phone" href="tel:+15552348900" aria-label="Call clinic phone number">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+        </svg>
+        (555) 234-8900
+      </a>
     </div>
   </header>
 
   <main id="main-content">
+    <!-- Hero: Left (Clinic timing, Quote/Line, Search bar) | Right (IMG) -->
     <section class="hero">
       <div class="container hero__grid">
         <div>
-          <span class="badge badge--success">Accepting New Patients &amp; Same-Day Visits</span>
-          <h1 class="hero__title">Trusted Healthcare Built Around <span>Your Family</span></h1>
-          <p class="hero__desc">
-            Board-certified physicians, preventive checkups, and on-site diagnostics working together
-            to keep your family healthy under one roof.
-          </p>
-
-          <form class="hero__search-form" id="homeQuickSearchForm" role="search">
-            <label class="sr-only" for="homeQuickSearchInput">Search doctor or specialty</label>
-            <input
-              class="hero__search-input"
-              type="search"
-              id="homeQuickSearchInput"
-              placeholder="Filter doctors by name, specialty, or condition..."
-            >
-            <button type="submit" class="btn btn--primary btn--sm">Search</button>
-          </form>
-
-          <div class="hero__actions">
-            <a class="btn btn--primary" href="#doctors">Meet Our Doctors</a>
-            <a class="btn btn--secondary" href="#departments">Explore Departments</a>
+          <div class="clinic-timing-pill">
+            <span class="clinic-timing-pill__dot" aria-hidden="true"></span>
+            <span>Clinic Timing: Mon–Sat 8:00 AM – 8:00 PM | Sun 9:00 AM – 3:00 PM</span>
           </div>
-          <div class="hero__trust">
-            <span>&#10003; On-site Lab &amp; X-Ray</span>
-            <span>&#10003; Same-Day Consultations</span>
-            <span>&#10003; 6 Clinical Departments</span>
+
+          <h1 class="hero__quote">
+            &ldquo;Compassionate Care, <span>Closer to Every Family</span>&rdquo;
+          </h1>
+
+          <div class="hero__lines">
+            <p style="margin:0;">Dedicated primary care physicians and specialists focused on timely diagnosis.</p>
+            <p style="margin:0;">Modern on-site diagnostics, minimal wait times, and digital patient records.</p>
+            <p style="margin:0;">Serving your neighborhood with trusted outpatient medicine every day.</p>
+          </div>
+
+          <div class="search-wrapper">
+            <form class="hero-search" id="homeSearchForm" role="search">
+              <svg class="hero-search__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+              <label class="sr-only" for="homeSearchInput">Search doctors or departments</label>
+              <input
+                class="hero-search__input"
+                type="search"
+                id="homeSearchInput"
+                placeholder="Search doctors, specialties, or clinic services..."
+                autocomplete="off"
+              >
+              <button type="submit" class="hero-search__btn">Search</button>
+            </form>
+            <div class="search-results" id="homeSearchResults" hidden aria-live="polite"></div>
           </div>
         </div>
 
-        <div class="hero__visual">
-          <svg viewBox="0 0 420 280" width="100%" role="img" aria-label="CarePulse clinic care and diagnostics illustration">
-            <rect width="420" height="280" rx="14" fill="#e6f4f4"/>
-            <circle cx="345" cy="58" r="34" fill="#c7ebeb"/>
-            <rect x="34" y="42" width="210" height="196" rx="14" fill="#ffffff" stroke="#cde2e4"/>
-            <rect x="52" y="64" width="70" height="10" rx="5" fill="#0d7377"/>
-            <rect x="52" y="84" width="140" height="8" rx="4" fill="#b9d6d8"/>
-            <rect x="52" y="100" width="118" height="8" rx="4" fill="#d4e7e8"/>
-            <path d="M54 152h32l14-26 18 44 16-28 12 10h68" fill="none" stroke="#14a098" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-            <rect x="52" y="192" width="84" height="24" rx="6" fill="#0d7377"/>
-            <text x="94" y="208" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="700" font-family="sans-serif">ECG Normal</text>
-            <rect x="262" y="96" width="124" height="142" rx="14" fill="#0d7377"/>
-            <circle cx="324" cy="142" r="24" fill="#e6f4f4"/>
-            <path d="M324 130v24M312 142h24" stroke="#0d7377" stroke-width="4" stroke-linecap="round"/>
-            <rect x="282" y="182" width="84" height="8" rx="4" fill="#9de0dc"/>
-            <rect x="294" y="198" width="60" height="8" rx="4" fill="#78cbc6"/>
-          </svg>
-          <div class="hero__floating-card">
+        <div class="hero-image-card">
+          <img
+            src="images/clinic-hero.jpg"
+            alt="Bright reception and lounge area inside DocEase Clinic"
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- Clinic Analysis Chart Band -->
+    <section class="section">
+      <div class="container">
+        <div class="chart-panel">
+          <div class="chart-panel__header">
             <div>
-              <strong>5 Specialists Available Today</strong>
-              <div style="font-size:0.86rem;color:var(--color-text-muted);">Walk-in &amp; scheduled visits open</div>
+              <h2 class="chart-panel__title">Clinic Analysis Chart</h2>
+              <p class="chart-panel__subtitle">Monthly outpatient visits and patient satisfaction rate by department</p>
             </div>
-            <a class="btn btn--primary btn--sm" href="#contact">Call Reception</a>
+            <div class="chart-legend" aria-label="Chart legend">
+              <span class="legend-item"><span class="legend-swatch legend-swatch--navy"></span>Monthly Visits</span>
+              <span class="legend-item"><span class="legend-swatch legend-swatch--sage"></span>Satisfaction (%)</span>
+            </div>
           </div>
+
+          <div class="chart-bars" id="clinicAnalysisChart" aria-label="Department analysis bar chart"></div>
         </div>
       </div>
     </section>
 
-    <section class="section section--tight">
+    <!-- 4-Image Card Grid (Img 1 | Img 2 | Img 3 | Img 4) -->
+    <section class="section" style="padding-top:0.5rem;">
       <div class="container">
-        <div class="stats-grid">
-          <div class="stat-card">
-            <div class="stat-card__value">6</div>
-            <div class="stat-card__label">Core Medical Specialties</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-card__value">4.9 &#9733;</div>
-            <div class="stat-card__label">Average Doctor Rating</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-card__value">98%</div>
-            <div class="stat-card__label">Patient Satisfaction</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-card__value">Same-Day</div>
-            <div class="stat-card__label">Lab &amp; Imaging Reports</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section--alt" id="doctors">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-header__eyebrow">Our Specialists</span>
-          <h2 class="section-header__title">Clinic Doctors</h2>
-          <p class="section-header__desc">
-            Meet our experienced primary care and specialty physicians available across the week.
-          </p>
-        </div>
-
-        <div class="card-grid" id="homeFeaturedDoctors" aria-live="polite"></div>
-      </div>
-    </section>
-
-    <section class="section" id="departments">
-      <div class="container">
-        <div class="section-header section-header--center">
-          <span class="section-header__eyebrow">Departments &amp; Care</span>
-          <h2 class="section-header__title">How We Care for You</h2>
-          <p class="section-header__desc">Comprehensive outpatient services backed by modern on-site diagnostics.</p>
-        </div>
-
-        <div class="card-grid">
-          <article class="card">
-            <h3 class="card__title">General Medicine</h3>
-            <p class="card__text">Primary care checkups, diabetes and blood pressure management, and acute adult sick visits.</p>
+        <div class="gallery-grid">
+          <article class="gallery-card">
+            <div class="gallery-card__img">
+              <svg viewBox="0 0 240 150" width="100%" role="img" aria-label="Consultation Suites">
+                <rect width="240" height="150" rx="8" fill="#ffffff"/>
+                <rect x="24" y="26" width="192" height="98" rx="8" fill="#e8eef6"/>
+                <circle cx="80" cy="68" r="20" fill="#162d50"/>
+                <path d="M54 114c4-14 14-20 26-20s22 6 26 20" fill="#162d50"/>
+                <rect x="122" y="54" width="72" height="10" rx="5" fill="#5f8567"/>
+                <rect x="122" y="74" width="54" height="8" rx="4" fill="#9fb9a6"/>
+                <rect x="122" y="92" width="64" height="8" rx="4" fill="#9fb9a6"/>
+              </svg>
+            </div>
+            <div class="gallery-card__body">
+              <h3 class="gallery-card__title">Consultation Suites</h3>
+              <p class="gallery-card__caption">Private, calm rooms for family and specialist visits.</p>
+            </div>
           </article>
 
-          <article class="card">
-            <h3 class="card__title">Cardiology</h3>
-            <p class="card__text">Preventive heart care, ECGs, echocardiography, and personalized hypertension treatment.</p>
+          <article class="gallery-card">
+            <div class="gallery-card__img">
+              <svg viewBox="0 0 240 150" width="100%" role="img" aria-label="Diagnostic Lab">
+                <rect width="240" height="150" rx="8" fill="#ffffff"/>
+                <rect x="24" y="26" width="192" height="98" rx="8" fill="#e7f0e9"/>
+                <circle cx="120" cy="74" r="32" fill="#162d50"/>
+                <circle cx="120" cy="74" r="18" fill="#8fd19e"/>
+                <circle cx="120" cy="74" r="7" fill="#162d50"/>
+              </svg>
+            </div>
+            <div class="gallery-card__body">
+              <h3 class="gallery-card__title">On-Site Diagnostics</h3>
+              <p class="gallery-card__caption">Same-day blood panels, ECG, and digital imaging.</p>
+            </div>
           </article>
 
-          <article class="card">
-            <h3 class="card__title">Pediatrics</h3>
-            <p class="card__text">Infant wellness exams, childhood immunizations, asthma care, and school physicals.</p>
+          <article class="gallery-card">
+            <div class="gallery-card__img">
+              <svg viewBox="0 0 240 150" width="100%" role="img" aria-label="Cardiac Care">
+                <rect width="240" height="150" rx="8" fill="#ffffff"/>
+                <rect x="24" y="26" width="192" height="98" rx="8" fill="#e8eef6"/>
+                <path d="M44 80h34l14-26 18 42 16-26 12 10h58" fill="none" stroke="#162d50" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="182" cy="48" r="10" fill="#5f8567"/>
+              </svg>
+            </div>
+            <div class="gallery-card__body">
+              <h3 class="gallery-card__title">Heart &amp; Wellness</h3>
+              <p class="gallery-card__caption">Preventive screenings and blood pressure programs.</p>
+            </div>
           </article>
-        </div>
-      </div>
-    </section>
 
-    <section class="section section--tight" id="contact">
-      <div class="container">
-        <div class="cta-banner">
-          <div>
-            <h2 class="cta-banner__title">Visit CarePulse Medical Clinic</h2>
-            <p class="cta-banner__desc">420 Wellness Avenue, Suite 200 &bull; Open Mon–Fri 8:00 AM – 8:00 PM, Sat 8:30 AM – 6:00 PM.</p>
-          </div>
-          <a class="btn btn--secondary" href="tel:+15552348900">Call (555) 234-8900</a>
+          <article class="gallery-card">
+            <div class="gallery-card__img">
+              <svg viewBox="0 0 240 150" width="100%" role="img" aria-label="Pediatric Wing">
+                <rect width="240" height="150" rx="8" fill="#ffffff"/>
+                <rect x="24" y="26" width="192" height="98" rx="8" fill="#e7f0e9"/>
+                <rect x="82" y="46" width="76" height="58" rx="10" fill="#5f8567"/>
+                <path d="M120 58v34M103 75h34" stroke="#ffffff" stroke-width="6" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="gallery-card__body">
+              <h3 class="gallery-card__title">Pediatric &amp; Family</h3>
+              <p class="gallery-card__caption">Gentle checkups and immunizations for all ages.</p>
+            </div>
+          </article>
         </div>
       </div>
     </section>
   </main>
 
+  <!-- Footer: Logo/Name (Left) | 3 Link Lines (Center) | 3 Contact Lines (Right) -->
   <footer class="site-footer">
     <div class="container">
       <div class="footer-grid">
         <div>
-          <h3 class="footer-title">CarePulse Medical Clinic</h3>
-          <p style="margin:0;font-size:0.92rem;">
-            Delivering accessible, patient-first outpatient care with on-site diagnostics and compassionate specialists.
+          <div class="footer-brand">
+            <img class="footer-brand__logo" src="images/logo.jpg" alt="DocEase Clinic logo">
+            <span>DocEase Clinic</span>
+          </div>
+          <p style="margin:0;font-size:0.9rem;max-width:300px;">
+            Patient-first primary and specialty healthcare built around your family.
           </p>
         </div>
+
         <div>
-          <h3 class="footer-title">Navigation</h3>
-          <ul class="footer-links">
+          <h3 class="footer-heading">Pages</h3>
+          <ul class="footer-lines">
             <li><a href="index.html">Home</a></li>
-            <li><a href="#doctors">Our Doctors</a></li>
-            <li><a href="#departments">Departments</a></li>
-            <li><a href="#contact">Contact Clinic</a></li>
+            <li><a href="finddoctor.html">FindDoctor</a></li>
+            <li><a href="doctorprofile.html">Doctor Profile</a></li>
           </ul>
         </div>
+
         <div>
-          <h3 class="footer-title">Clinic Contact &amp; Hours</h3>
-          <ul class="footer-links">
+          <h3 class="footer-heading">Clinic Info</h3>
+          <ul class="footer-lines">
             <li>420 Wellness Avenue, Suite 200</li>
             <li>Phone: (555) 234-8900</li>
-            <li>Email: care@carepulseclinic.example</li>
-            <li>Mon–Fri 8:00 AM – 8:00 PM | Sat 8:30 AM – 6:00 PM</li>
+            <li>Email: care@doceaseclinic.example</li>
           </ul>
         </div>
       </div>
+
       <div class="footer-bottom">
-        <span>&copy; <span id="currentYear">2026</span> CarePulse Medical Clinic. All rights reserved.</span>
-        <span>For emergencies, please call local emergency services immediately.</span>
+        <span>&copy; <span id="currentYear">2026</span> DocEase Clinic.</span>
+        <span>Mon–Sat 8:00 AM – 8:00 PM | Sun 9:00 AM – 3:00 PM</span>
       </div>
     </div>
   </footer>

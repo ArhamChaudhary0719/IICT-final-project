@@ -1,9 +1,18 @@
 /* ==========================================================================
-   CarePulse Medical Clinic - Home Page Interactive Logic
+   CarePulse Medical Clinic - Home Page Script (Prototype Edition)
    ========================================================================== */
 
 (function () {
   "use strict";
+
+  const ANALYSIS_DATA = [
+    { label: "General", visits: 420, satisfaction: 97 },
+    { label: "Cardiology", visits: 280, satisfaction: 98 },
+    { label: "Pediatrics", visits: 350, satisfaction: 99 },
+    { label: "Dermatology", visits: 230, satisfaction: 96 },
+    { label: "Orthopedics", visits: 210, satisfaction: 95 },
+    { label: "Diagnostics", visits: 390, satisfaction: 98 }
+  ];
 
   function escapeHtml(value) {
     return String(value)
@@ -12,56 +21,6 @@
       .replace(/>/g, "&gt;")
       .replace(/"/g, "&quot;")
       .replace(/'/g, "&#39;");
-  }
-
-  function createAvatarSvg(doctor, size) {
-    const dim = size || 72;
-    const initials = doctor.name
-      .replace(/^Dr\.\s*/i, "")
-      .split(" ")
-      .map((part) => part[0])
-      .join("")
-      .slice(0, 2)
-      .toUpperCase();
-    return (
-      `<svg viewBox="0 0 80 80" width="${dim}" height="${dim}" aria-hidden="true">` +
-      `<rect width="80" height="80" fill="${doctor.accentColor}" opacity="0.14"/>` +
-      `<circle cx="40" cy="30" r="14" fill="${doctor.accentColor}" opacity="0.88"/>` +
-      `<path d="M16 74c2-15 12-22 24-22s22 7 24 22" fill="${doctor.accentColor}" opacity="0.65"/>` +
-      `<text x="40" y="35" text-anchor="middle" fill="#ffffff" font-size="13" font-weight="700" font-family="sans-serif">${escapeHtml(
-        initials
-      )}</text>` +
-      "</svg>"
-    );
-  }
-
-  function renderDoctorCard(doc) {
-    return `
-      <article class="card">
-        <div class="doctor-card__header">
-          <div class="doctor-avatar">${createAvatarSvg(doc, 72)}</div>
-          <div>
-            <h3 class="card__title" style="margin-bottom:0.2rem;">${escapeHtml(doc.name)}</h3>
-            <div class="doctor-card__specialty">${escapeHtml(doc.specialty)}</div>
-            <div class="doctor-card__creds">${escapeHtml(doc.credentials)}</div>
-          </div>
-        </div>
-        <p class="card__text">${escapeHtml(doc.bio)}</p>
-        <ul class="doctor-details">
-          <li><strong>Experience:</strong> ${escapeHtml(doc.experience)} &bull; &#9733; ${escapeHtml(
-            doc.rating
-          )} (${doc.reviewsCount})</li>
-          <li><strong>Clinic Days:</strong> ${escapeHtml(doc.availability)}</li>
-          <li><strong>Languages:</strong> ${escapeHtml(doc.languages)}</li>
-        </ul>
-        <div class="card__footer">
-          <span class="badge ${doc.availableToday ? "badge--success" : "badge--warning"}">
-            ${doc.availableToday ? "Available Today" : "By Schedule"}
-          </span>
-          <a class="btn btn--primary btn--sm" href="#contact">Book Visit</a>
-        </div>
-      </article>
-    `;
   }
 
   function initNavigation() {
@@ -85,58 +44,95 @@
         toggle.focus();
       }
     });
-
-    menu.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("click", closeMenu);
-    });
   }
 
-  function initHomePage() {
-    const doctorsGrid = document.getElementById("homeFeaturedDoctors");
-    const doctorsSection = document.getElementById("doctors");
-    const quickForm = document.getElementById("homeQuickSearchForm");
-    const quickInput = document.getElementById("homeQuickSearchInput");
+  function initClinicAnalysisChart() {
+    const chartEl = document.getElementById("clinicAnalysisChart");
+    if (!chartEl) return;
 
-    if (!doctorsGrid || !window.CLINIC_DATA) return;
+    const maxVisits = 450;
+    chartEl.innerHTML = ANALYSIS_DATA.map((item) => {
+      const visitsHeight = Math.round((item.visits / maxVisits) * 115);
+      const satHeight = Math.round((item.satisfaction / 100) * 115);
+      return `
+        <div class="chart-col">
+          <div class="chart-col__val">${item.visits} / ${item.satisfaction}%</div>
+          <div class="chart-col__pair">
+            <div class="chart-bar chart-bar--navy" style="height:${visitsHeight}px" title="${escapeHtml(
+              item.label
+            )}: ${item.visits} monthly visits"></div>
+            <div class="chart-bar chart-bar--sage" style="height:${satHeight}px" title="${escapeHtml(
+              item.label
+            )}: ${item.satisfaction}% satisfaction"></div>
+          </div>
+          <div class="chart-col__label">${escapeHtml(item.label)}</div>
+        </div>
+      `;
+    }).join("");
+  }
 
-    function renderList(query) {
-      const q = (query || "").trim().toLowerCase();
-      const filtered = window.CLINIC_DATA.doctors.filter((doc) => {
-        if (!q) return true;
-        return (
-          doc.name.toLowerCase().includes(q) ||
-          doc.specialty.toLowerCase().includes(q) ||
-          doc.bio.toLowerCase().includes(q) ||
-          doc.focusAreas.some((area) => area.toLowerCase().includes(q))
-        );
-      });
+  function initHomeSearch() {
+    const form = document.getElementById("homeSearchForm");
+    const input = document.getElementById("homeSearchInput");
+    const resultsBox = document.getElementById("homeSearchResults");
+    if (!form || !input || !resultsBox || !window.CLINIC_DATA) return;
 
-      if (filtered.length === 0) {
-        doctorsGrid.innerHTML =
-          '<div class="empty-state"><strong>No matching doctors found.</strong><p>Clear the search box to view all clinic specialists.</p></div>';
+    function renderResults(query) {
+      const q = query.trim().toLowerCase();
+      if (!q) {
+        resultsBox.hidden = true;
+        resultsBox.innerHTML = "";
         return;
       }
 
-      doctorsGrid.innerHTML = filtered.map(renderDoctorCard).join("");
+      const matches = window.CLINIC_DATA.doctors.filter(
+        (doc) =>
+          doc.name.toLowerCase().includes(q) ||
+          doc.specialty.toLowerCase().includes(q) ||
+          doc.focusAreas.some((area) => area.toLowerCase().includes(q))
+      );
+
+      if (matches.length === 0) {
+        resultsBox.innerHTML =
+          '<div class="search-result-item"><span>No matching doctors or specialties found.</span></div>';
+      } else {
+        resultsBox.innerHTML = matches
+          .map(
+            (doc) => `
+            <a class="search-result-item" href="doctorprofile.html?id=${encodeURIComponent(
+              doc.id
+            )}">
+              <span><strong>${escapeHtml(doc.name)}</strong> &mdash; ${escapeHtml(
+                doc.specialty
+              )}</span>
+              <span style="font-size:0.82rem;color:var(--color-sage-dark);font-weight:600;">${escapeHtml(
+                doc.availability
+              )}</span>
+            </a>
+          `
+          )
+          .join("");
+      }
+      resultsBox.hidden = false;
     }
 
-    if (quickInput) {
-      quickInput.addEventListener("input", () => {
-        renderList(quickInput.value);
-      });
-    }
+    input.addEventListener("input", () => renderResults(input.value));
 
-    if (quickForm && quickInput) {
-      quickForm.addEventListener("submit", (event) => {
-        event.preventDefault();
-        renderList(quickInput.value);
-        if (doctorsSection) {
-          doctorsSection.scrollIntoView({ behavior: "smooth", block: "start" });
-        }
-      });
-    }
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const q = input.value.trim();
+      if (q) {
+        window.location.href = `finddoctor.html?q=${encodeURIComponent(q)}`;
+      } else {
+        window.location.href = "finddoctor.html";
+      }
+    });
 
-    renderList("");
+    document.addEventListener("click", (event) => {
+      if (!form.parentElement.contains(event.target)) {
+        resultsBox.hidden = true;
+      }
+    });
   }
 
   document.addEventListener("DOMContentLoaded", () => {
@@ -144,6 +140,7 @@
     if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 
     initNavigation();
-    initHomePage();
+    initClinicAnalysisChart();
+    initHomeSearch();
   });
 })();
