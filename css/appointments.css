@@ -6,20 +6,21 @@
 
 /* 1. Color Variables & Base Reset */
 :root {
-  --navy-dark: #102a43;
-  --navy-primary: #1b365d;
-  --navy-soft: #334e68;
+  --navy-dark: #0f203b;
+  --navy-primary: #162d50;
+  --navy-soft: #2c466e;
 
-  --sage-primary: #5f8575;
-  --sage-dark: #456758;
-  --sage-light: #e4efe9;
-  --sage-tint: #f2f7f4;
+  --sage-primary: #5f8567;
+  --sage-dark: #486950;
+  --sage-light: #e6efe8;
+  --sage-tint: #f3f7f4;
+  --sage-on-dark: #c5dcc9;
 
   --bg-page: #f6f9f7;
   --surface: #ffffff;
-  --border-color: #d4e0da;
-  --text-main: #102a43;
-  --text-muted: #486581;
+  --border-color: #d3dfd6;
+  --text-main: #0f203b;
+  --text-muted: #475d75;
 
   --danger-bg: #fdecec;
   --danger-text: #9b1c1c;
@@ -90,24 +91,26 @@ input:focus-visible {
 
 /* 4. Header & Responsive Navigation */
 .site-header {
-  background-color: var(--navy-primary);
-  color: #ffffff;
-  border-bottom: 4px solid var(--sage-primary);
+  background-color: #ffffff;
+  color: var(--navy-primary);
+  border-top: 3px solid var(--sage-primary);
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: 0 2px 8px rgba(15, 32, 59, 0.05);
 }
 
 .header-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 70px;
+  min-height: 74px;
   gap: 1rem;
 }
 
 .brand-link {
   display: inline-flex;
   align-items: center;
-  gap: 0.65rem;
-  color: #ffffff;
+  gap: 0.7rem;
+  color: var(--navy-primary);
   text-decoration: none;
   font-size: 1.35rem;
   font-weight: 700;
@@ -116,16 +119,17 @@ input:focus-visible {
 
 .brand-logo {
   height: 44px;
-  width: auto;
+  width: 44px;
   display: block;
-  object-fit: contain;
-  border-radius: 6px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1.5px solid var(--sage-primary);
   flex-shrink: 0;
 }
 
 .brand-tag {
-  font-weight: 400;
-  color: var(--sage-light);
+  font-weight: 600;
+  color: var(--sage-dark);
   font-size: 0.95rem;
 }
 
@@ -138,20 +142,21 @@ input:focus-visible {
 
 .main-nav a {
   display: inline-block;
-  color: #ffffff;
+  color: var(--navy-primary);
   text-decoration: none;
-  padding: 0.5rem 0.9rem;
+  padding: 0.5rem 0.95rem;
   border-radius: 6px;
-  font-weight: 500;
-  transition: background-color 0.2s ease;
+  font-weight: 600;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .main-nav a:hover {
-  background-color: var(--navy-soft);
+  background-color: var(--sage-tint);
+  color: var(--sage-dark);
 }
 
 .main-nav a.active {
-  background-color: var(--sage-primary);
+  background-color: var(--sage-dark);
   color: #ffffff;
   font-weight: 600;
 }
@@ -159,8 +164,8 @@ input:focus-visible {
 /* Hamburger Menu Button (hidden on desktop) */
 .menu-toggle {
   display: none;
-  background-color: transparent;
-  border: 2px solid var(--sage-light);
+  background-color: #ffffff;
+  border: 2px solid var(--navy-primary);
   border-radius: 6px;
   padding: 0.45rem 0.55rem;
   cursor: pointer;
@@ -168,11 +173,16 @@ input:focus-visible {
   gap: 4px;
 }
 
+.menu-toggle:hover {
+  background-color: var(--sage-tint);
+  border-color: var(--sage-dark);
+}
+
 .menu-bar {
   display: block;
   width: 22px;
   height: 2.5px;
-  background-color: #ffffff;
+  background-color: var(--navy-primary);
   border-radius: 2px;
 }
 
@@ -436,10 +446,9 @@ main.container {
 
 /* 9. Footer */
 .site-footer {
-  background-color: var(--navy-dark);
-  color: #e2e8f0;
+  background-color: var(--navy-primary);
+  color: #e6edf5;
   border-top: 4px solid var(--sage-primary);
-  padding: 1.5rem 0;
   margin-top: auto;
 }
 
@@ -447,18 +456,101 @@ main.container {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  align-items: flex-start;
+  gap: 1.5rem;
+  padding-top: 1.75rem;
+  padding-bottom: 1.5rem;
+}
+
+.footer-brand {
+  max-width: 420px;
+}
+
+.footer-brand-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  margin-bottom: 0.5rem;
+}
+
+.footer-logo {
+  height: 42px;
+  width: 42px;
+  display: block;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1.5px solid var(--sage-primary);
+  flex-shrink: 0;
+}
+
+.footer-brand-tag {
+  font-weight: 500;
+  color: var(--sage-on-dark);
+  font-size: 0.95rem;
+}
+
+.footer-tagline {
+  color: var(--sage-on-dark);
+  font-size: 0.92rem;
+}
+
+.footer-heading {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.55rem;
+}
+
+.footer-nav ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem 1.25rem;
+}
+
+.footer-nav a {
+  color: var(--sage-on-dark);
+  text-decoration: none;
+  font-size: 0.92rem;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.footer-nav a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  background-color: var(--navy-dark);
+  border-top: 1px solid rgba(95, 133, 103, 0.35);
+  padding: 0.95rem 0;
+}
+
+.footer-bottom-inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
   align-items: center;
   gap: 0.75rem;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
+  color: #dbe6f2;
 }
 
 .ai-note {
-  background-color: rgba(95, 133, 117, 0.25);
+  background-color: rgba(95, 133, 103, 0.2);
   border: 1px solid var(--sage-primary);
-  color: var(--sage-light);
+  color: var(--sage-on-dark);
   padding: 0.35rem 0.75rem;
   border-radius: 6px;
-  font-size: 0.85rem;
+  font-size: 0.84rem;
 }
 
 /* 10. Mobile Responsive Rules */
@@ -476,8 +568,8 @@ main.container {
   .main-nav {
     display: none;
     width: 100%;
-    padding-top: 0.5rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    padding-top: 0.65rem;
+    border-top: 1px solid var(--border-color);
   }
 
   .main-nav.open {
@@ -503,8 +595,14 @@ main.container {
     grid-template-columns: 1fr;
   }
 
-  .footer-inner {
+  .footer-inner,
+  .footer-bottom-inner {
     flex-direction: column;
+    align-items: center;
     text-align: center;
+  }
+
+  .footer-nav ul {
+    justify-content: center;
   }
 }
