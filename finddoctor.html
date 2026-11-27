@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DocEase Clinic | Find Doctor</title>
+  <meta name="description" content="DocEase Medical Directory — search and filter DocEase Clinic doctors by specialty, experience, and availability.">
+  <link rel="icon" type="image/jpeg" href="images/logo.jpg">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <!-- Header: Logo/Name (Left) | Home, Find Doctor, Doctor Profile (Center) | Phone No. (Right) -->
+  <header class="site-header">
+    <div class="container nav-wrapper">
+      <a class="brand" href="index.html">
+        <img class="brand__logo" src="images/logo.jpg" alt="DocEase Clinic logo">
+        <span>
+          DocEase
+          <span class="brand__sub">Clinic</span>
+        </span>
+      </a>
+
+      <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="navMenu" aria-label="Toggle navigation menu">
+        Menu
+      </button>
+
+      <nav class="nav-center" aria-label="Primary navigation">
+        <ul class="nav-menu" id="navMenu">
+          <li><a class="nav-link" href="index.html">Home</a></li>
+          <li><a class="nav-link is-active" href="finddoctor.html" aria-current="page">Find Doctor</a></li>
+          <li><a class="nav-link" href="doctorprofile.html">Doctor Profile</a></li>
+        </ul>
+      </nav>
+
+      <a class="nav-phone" href="tel:+15552348900" aria-label="Call clinic phone number">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+        </svg>
+        (555) 234-8900
+      </a>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <!-- Directory Header (Prototype: DocEase Medical Directory + Title + Subtitle Lines) -->
+    <section class="directory-hero">
+      <div class="container">
+        <div class="directory-hero__badge">
+          <span class="clinic-timing-pill__dot" aria-hidden="true"></span>
+          <span>DocEase Medical Directory</span>
+        </div>
+
+        <h1 class="directory-hero__title">
+          Find Your Trusted <span>Clinic Specialist</span>
+        </h1>
+
+        <div class="directory-hero__lines">
+          <p>Search board-certified physicians by name, department specialty, or clinical focus area.</p>
+          <p>Filter by years of experience and weekly clinic availability before viewing a full doctor profile.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Filter & Search Box + Results -->
+    <section class="section">
+      <div class="container">
+        <div class="filter-panel" aria-label="Filter and search doctors">
+          <form class="filter-search" id="doctorFilterForm" role="search">
+            <svg class="filter-search__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <label class="sr-only" for="doctorSearchInput">Search doctors by name, specialty, or condition</label>
+            <input
+              class="filter-search__input"
+              type="search"
+              id="doctorSearchInput"
+              placeholder="Search by doctor name, specialty, or condition (e.g., Cardiology, Asthma, ECG)..."
+              autocomplete="off"
+            >
+            <button type="button" class="filter-search__clear" id="doctorSearchClear" hidden>Clear</button>
+          </form>
+
+          <div class="filter-groups">
+            <div>
+              <span class="filter-group__label" id="specialtyLabel">Speciality:</span>
+              <div class="filter-chips" role="group" aria-labelledby="specialtyLabel">
+                <button type="button" class="filter-chip is-active" data-specialty="all" aria-pressed="true">All</button>
+                <button type="button" class="filter-chip" data-specialty="Cardiology" aria-pressed="false">Cardiology</button>
+                <button type="button" class="filter-chip" data-specialty="General Medicine" aria-pressed="false">General Medicine</button>
+                <button type="button" class="filter-chip" data-specialty="Pediatrics" aria-pressed="false">Pediatrics</button>
+                <button type="button" class="filter-chip" data-specialty="Orthopedics" aria-pressed="false">Orthopedics</button>
+                <button type="button" class="filter-chip" data-specialty="Dermatology" aria-pressed="false">Dermatology</button>
+                <button type="button" class="filter-chip" data-specialty="Diagnostics & Lab" aria-pressed="false">Diagnostics &amp; Lab</button>
+              </div>
+            </div>
+
+            <div class="filter-split">
+              <div>
+                <span class="filter-group__label" id="experienceLabel">Experience:</span>
+                <div class="filter-chips" role="group" aria-labelledby="experienceLabel">
+                  <button type="button" class="filter-chip is-active" data-experience="all" aria-pressed="true">All</button>
+                  <button type="button" class="filter-chip" data-experience="under-10" aria-pressed="false">Under 10 Yrs</button>
+                  <button type="button" class="filter-chip" data-experience="10-11" aria-pressed="false">10&ndash;11 Yrs</button>
+                  <button type="button" class="filter-chip" data-experience="12-plus" aria-pressed="false">12+ Yrs</button>
+                </div>
+              </div>
+
+              <div>
+                <span class="filter-group__label" id="availabilityLabel">Availability:</span>
+                <div class="filter-chips" role="group" aria-labelledby="availabilityLabel">
+                  <button type="button" class="filter-chip filter-chip--sage is-active" data-availability="any" aria-pressed="true">Any</button>
+                  <button type="button" class="filter-chip filter-chip--sage" data-availability="today" aria-pressed="false">Available Today</button>
+                  <button type="button" class="filter-chip filter-chip--sage" data-availability="weekdays" aria-pressed="false">Mon &ndash; Fri</button>
+                  <button type="button" class="filter-chip filter-chip--sage" data-availability="saturday" aria-pressed="false">Saturday</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="directory-toolbar">
+          <p class="directory-count" id="doctorResultsCount" aria-live="polite">Showing 6 of 6 Doctors</p>
+          <button type="button" class="btn-reset" id="resetDoctorFilters" disabled>Reset Filters</button>
+        </div>
+
+        <div class="doctors-grid" id="doctorGrid"></div>
+
+        <div class="empty-state" id="doctorEmptyState" hidden>
+          <h3>No matching doctors found</h3>
+          <p>Try adjusting your search keywords or clearing one of the active specialty, experience, or availability filters.</p>
+          <button type="button" class="btn-primary" id="emptyResetBtn">Clear All Filters</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer: Logo/Name (Left) | Pages (Center) | Clinic Info (Right) -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">
+            <img class="footer-brand__logo" src="images/logo.jpg" alt="DocEase Clinic logo">
+            <span>DocEase Clinic</span>
+          </div>
+          <p style="margin:0;font-size:0.9rem;max-width:300px;">
+            Patient-first primary and specialty healthcare built around your family.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="footer-heading">Pages</h3>
+          <ul class="footer-lines">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="finddoctor.html">Find Doctor</a></li>
+            <li><a href="doctorprofile.html">Doctor Profile</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer-heading">Clinic Info</h3>
+          <ul class="footer-lines">
+            <li>420 Wellness Avenue, Suite 200</li>
+            <li>Phone: (555) 234-8900</li>
+            <li>Email: care@doceaseclinic.example</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>&copy; <span id="currentYear">2026</span> DocEase Clinic.</span>
+        <span>Mon&ndash;Sat 8:00 AM &ndash; 8:00 PM | Sun 9:00 AM &ndash; 3:00 PM</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

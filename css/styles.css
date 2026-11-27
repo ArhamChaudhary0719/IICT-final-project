@@ -1,6 +1,6 @@
 /* ==========================================================================
-   CarePulse Medical Clinic - Sage Green & Navy Blue Theme
-   Styled to match the Home Page Prototype
+   DocEase Clinic - Sage Green & Navy Blue Theme
+   Styled for Home & Find Doctor Prototypes
    ========================================================================== */
 
 :root {
@@ -376,6 +376,91 @@ input {
   background: var(--color-sage-light);
 }
 
+.search-result-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.65rem 0.95rem;
+  background: var(--color-navy-soft);
+  color: var(--color-navy);
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+.search-result-footer:hover {
+  background: var(--color-sage-light);
+  color: var(--color-navy-dark);
+}
+
+/* Home Hero Quick Links & Card Action Links */
+.hero-quick-actions {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  max-width: 540px;
+}
+
+.hero-quick-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.9rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-navy);
+  color: #ffffff;
+  font-size: 0.86rem;
+  font-weight: 600;
+  transition: background-color 0.18s ease, transform 0.15s ease;
+}
+
+.hero-quick-btn:hover {
+  background: var(--color-sage-dark);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.hero-quick-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.36rem 0.75rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  color: var(--color-navy);
+  font-size: 0.82rem;
+  font-weight: 600;
+  transition: background-color 0.18s ease, border-color 0.18s ease;
+}
+
+.hero-quick-chip:hover {
+  background: var(--color-sage-light);
+  border-color: var(--color-sage);
+  color: var(--color-navy-dark);
+}
+
+.chart-panel__action {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.48rem 0.95rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-sage-light);
+  border: 1px solid var(--color-border);
+  color: var(--color-navy);
+  font-size: 0.86rem;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: background-color 0.18s ease, border-color 0.18s ease;
+}
+
+.chart-panel__action:hover {
+  background: var(--color-navy);
+  border-color: var(--color-navy);
+  color: #ffffff;
+}
+
 /* Right Hero IMG Box */
 .hero-image-card {
   background: var(--color-surface);
@@ -548,6 +633,9 @@ input {
 
 .gallery-card__body {
   padding: 0.95rem 1rem 1.05rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 .gallery-card__title {
@@ -557,9 +645,438 @@ input {
 }
 
 .gallery-card__caption {
-  margin: 0;
+  margin: 0 0 0.75rem;
   font-size: 0.86rem;
   color: var(--color-text-muted);
+  flex: 1;
+}
+
+.gallery-card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: var(--color-sage-dark);
+}
+
+.gallery-card__link:hover {
+  color: var(--color-navy);
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   Find Doctor Page (Prototype: Directory Header + Filter/Search Box + Grid)
+   ========================================================================== */
+.directory-hero {
+  padding: 2.35rem 0 1.85rem;
+  background: linear-gradient(135deg, var(--color-sage-light) 0%, var(--color-bg) 55%, var(--color-navy-soft) 100%);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.directory-hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.36rem 0.9rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-navy);
+  color: #ffffff;
+  font-size: 0.83rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.9rem;
+}
+
+.directory-hero__title {
+  margin: 0 0 0.65rem;
+  font-size: clamp(1.85rem, 3.4vw, 2.55rem);
+  line-height: 1.15;
+  color: var(--color-navy);
+  letter-spacing: -0.015em;
+}
+
+.directory-hero__title span {
+  color: var(--color-sage-dark);
+}
+
+.directory-hero__lines {
+  display: grid;
+  gap: 0.3rem;
+  max-width: 680px;
+  color: var(--color-text-muted);
+  font-size: 1rem;
+}
+
+.directory-hero__lines p {
+  margin: 0;
+}
+
+/* Filter and Search Box (matches prototype card) */
+.filter-panel {
+  background: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem 1.6rem;
+  box-shadow: var(--shadow-md);
+}
+
+.filter-search {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  background: var(--color-sage-tint);
+  border: 2px solid var(--color-navy);
+  border-radius: var(--radius-pill);
+  padding: 0.45rem 0.65rem 0.45rem 1.05rem;
+  margin-bottom: 1.35rem;
+  transition: box-shadow 0.18s ease;
+}
+
+.filter-search:focus-within {
+  box-shadow: 0 0 0 3px rgba(95, 133, 103, 0.25);
+}
+
+.filter-search__icon {
+  color: var(--color-navy);
+  flex-shrink: 0;
+}
+
+.filter-search__input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  background: transparent;
+  padding: 0.4rem 0.25rem;
+  font-size: 0.98rem;
+  color: var(--color-text);
+}
+
+.filter-search__input:focus {
+  outline: none;
+}
+
+.filter-search__clear {
+  border: 0;
+  background: var(--color-navy-soft);
+  color: var(--color-navy);
+  border-radius: var(--radius-pill);
+  padding: 0.32rem 0.75rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.filter-search__clear:hover {
+  background: var(--color-navy);
+  color: #ffffff;
+}
+
+.filter-groups {
+  display: grid;
+  gap: 1.15rem;
+}
+
+.filter-groups > div,
+.filter-split > div {
+  min-width: 0;
+}
+
+.filter-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  padding-top: 0.25rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.filter-group__label {
+  display: block;
+  margin-bottom: 0.55rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--color-navy);
+  letter-spacing: 0.01em;
+}
+
+.filter-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.filter-chip {
+  padding: 0.45rem 0.95rem;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--color-border);
+  background: var(--color-sage-tint);
+  color: var(--color-navy);
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.16s ease, color 0.16s ease, border-color 0.16s ease, transform 0.12s ease;
+}
+
+.filter-chip:hover {
+  background: var(--color-sage-light);
+  border-color: var(--color-sage);
+}
+
+.filter-chip.is-active {
+  background: var(--color-navy);
+  border-color: var(--color-navy);
+  color: #ffffff;
+}
+
+.filter-chip--sage.is-active {
+  background: var(--color-sage-dark);
+  border-color: var(--color-sage-dark);
+  color: #ffffff;
+}
+
+/* Results Toolbar & Doctor Cards */
+.directory-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 1.65rem 0 1.1rem;
+}
+
+.directory-count {
+  margin: 0;
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: var(--color-navy);
+}
+
+.directory-count span {
+  color: var(--color-sage-dark);
+}
+
+.btn-reset {
+  padding: 0.42rem 0.95rem;
+  border-radius: var(--radius-pill);
+  border: 1.5px solid var(--color-navy);
+  background: transparent;
+  color: var(--color-navy);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.16s ease, color 0.16s ease;
+}
+
+.btn-reset:hover:not(:disabled) {
+  background: var(--color-navy);
+  color: #ffffff;
+}
+
+.btn-reset:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.doctors-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.doctor-card {
+  min-width: 0;
+  background: var(--color-surface);
+  border: 1.5px solid var(--color-border);
+  border-top: 4px solid var(--color-navy);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+
+.doctor-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-sage);
+}
+
+.doctor-card__head {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+}
+
+.doctor-card__avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, var(--color-navy), var(--color-sage-dark));
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 1.05rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.doctor-card__name {
+  margin: 0;
+  font-size: 1.08rem;
+  color: var(--color-navy);
+  line-height: 1.25;
+}
+
+.doctor-card__creds {
+  margin: 0.15rem 0 0;
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+}
+
+.doctor-card__badges {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.badge-specialty {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-navy-soft);
+  color: var(--color-navy);
+  font-size: 0.79rem;
+  font-weight: 700;
+}
+
+.badge-availability {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.79rem;
+  font-weight: 700;
+}
+
+.badge-availability--today {
+  background: var(--color-sage-light);
+  color: var(--color-sage-dark);
+}
+
+.badge-availability--scheduled {
+  background: #eef1f5;
+  color: var(--color-text-muted);
+}
+
+.doctor-card__bio {
+  margin: 0;
+  font-size: 0.89rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}
+
+.doctor-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.38rem;
+}
+
+.doctor-card__tag {
+  font-size: 0.76rem;
+  font-weight: 600;
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius-sm);
+  background: var(--color-sage-tint);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+}
+
+.doctor-card__meta {
+  margin-top: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.55rem 0.75rem;
+  padding: 0.75rem;
+  border-radius: var(--radius-sm);
+  background: var(--color-sage-tint);
+  border: 1px solid var(--color-border);
+  font-size: 0.82rem;
+}
+
+.doctor-card__meta-item strong {
+  display: block;
+  color: var(--color-navy);
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.doctor-card__actions {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.55rem;
+}
+
+.btn-primary {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.58rem 0.9rem;
+  border-radius: var(--radius-sm);
+  background: var(--color-navy);
+  color: #ffffff;
+  font-size: 0.88rem;
+  font-weight: 600;
+  transition: background-color 0.16s ease;
+}
+
+.btn-primary:hover {
+  background: var(--color-sage-dark);
+  color: #ffffff;
+}
+
+.btn-secondary {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.58rem 0.85rem;
+  border-radius: var(--radius-sm);
+  background: var(--color-sage-light);
+  border: 1px solid var(--color-border);
+  color: var(--color-navy);
+  font-size: 0.86rem;
+  font-weight: 600;
+  transition: background-color 0.16s ease, border-color 0.16s ease;
+}
+
+.btn-secondary:hover {
+  background: var(--color-sage);
+  border-color: var(--color-sage);
+  color: #ffffff;
+}
+
+.empty-state {
+  background: var(--color-surface);
+  border: 2px dashed var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  color: var(--color-text-muted);
+}
+
+.empty-state h3 {
+  margin: 0 0 0.45rem;
+  color: var(--color-navy);
+}
+
+.empty-state p {
+  margin: 0 0 1.15rem;
 }
 
 /* ==========================================================================
@@ -634,8 +1151,13 @@ input {
     grid-template-columns: 1fr;
   }
 
-  .gallery-grid {
+  .gallery-grid,
+  .doctors-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .filter-split {
+    grid-template-columns: 1fr;
   }
 
   .chart-bars {
@@ -679,8 +1201,13 @@ input {
   }
 
   .gallery-grid,
+  .doctors-grid,
   .footer-grid {
     grid-template-columns: 1fr;
+  }
+
+  .filter-panel {
+    padding: 1.15rem;
   }
 
   .chart-bars {
