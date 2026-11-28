@@ -1,0 +1,674 @@
+/* ==========================================================================
+   DocEase Clinic - Appointment Booking Stylesheet (Page 1)
+   Inherits design tokens and base styles from css/styles.css
+   Author: Student 26i-3213 (Branch: i263213)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Step Progress / Flow Header (Matches Wireframe Navigation)
+   -------------------------------------------------------------------------- */
+.booking-steps-wrapper {
+  background: var(--color-surface);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 1.25rem 1.5rem;
+  margin: 1.5rem 0 2rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.booking-steps {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 1rem;
+}
+
+.booking-step-item {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  flex: 1;
+  position: relative;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+}
+
+.booking-step-item:not(:last-child)::after {
+  content: "";
+  display: block;
+  flex: 1;
+  height: 2px;
+  background: var(--color-border);
+  margin-left: 0.5rem;
+}
+
+.booking-step-number {
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-pill);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+  background: var(--color-sage-light);
+  color: var(--color-navy);
+  border: 2px solid transparent;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+.booking-step-item.is-active {
+  color: var(--color-navy);
+  font-weight: 700;
+}
+
+.booking-step-item.is-active .booking-step-number {
+  background: var(--color-navy);
+  color: #ffffff;
+  border-color: var(--color-navy);
+  box-shadow: 0 0 0 4px var(--color-sage-light);
+}
+
+.booking-step-item.is-completed .booking-step-number {
+  background: var(--color-sage);
+  color: #ffffff;
+}
+
+.booking-step-tag {
+  font-size: 0.72rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-sage-light);
+  color: var(--color-sage-dark);
+  margin-left: 0.25rem;
+  font-weight: 600;
+}
+
+/* --------------------------------------------------------------------------
+   Booking Page Layout & Sections
+   -------------------------------------------------------------------------- */
+.booking-page-title {
+  margin: 1.5rem 0 0.5rem;
+  font-size: 2rem;
+  color: var(--color-navy);
+  letter-spacing: -0.02em;
+}
+
+.booking-page-subtitle {
+  color: var(--color-text-muted);
+  margin: 0 0 1.5rem;
+  font-size: 1.05rem;
+}
+
+.booking-section {
+  background: var(--color-surface);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 1.75rem;
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow-sm);
+  transition: border-color 0.2s ease;
+}
+
+.booking-section:focus-within {
+  border-color: var(--color-sage);
+}
+
+.booking-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 0.85rem;
+}
+
+.booking-section-title {
+  font-size: 1.3rem;
+  color: var(--color-navy);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0;
+}
+
+.section-number-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-pill);
+  background: var(--color-navy);
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.booking-section-tip {
+  font-size: 0.88rem;
+  color: var(--color-text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   Section 1: Select a Doctor (Grid & Doctor Cards)
+   -------------------------------------------------------------------------- */
+.doctor-search-bar {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.doctor-search-input {
+  flex: 1;
+  min-width: 240px;
+  padding: 0.65rem 1rem;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+  background: #ffffff;
+}
+
+.doctor-filter-select {
+  padding: 0.65rem 1rem;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+  background: #ffffff;
+}
+
+.doctors-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
+
+.doctor-card {
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  background: var(--color-surface);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+  position: relative;
+  outline: none;
+}
+
+.doctor-card:hover {
+  border-color: var(--color-sage);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.doctor-card:focus-visible {
+  outline: 3px solid var(--color-sage);
+  outline-offset: 3px;
+}
+
+.doctor-card.is-selected {
+  border-color: var(--color-sage-dark);
+  background: var(--color-sage-tint);
+  box-shadow: 0 0 0 2px var(--color-sage);
+}
+
+.doctor-card__header {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 0.85rem;
+}
+
+.doctor-card__photo {
+  width: 68px;
+  height: 68px;
+  border-radius: var(--radius-sm);
+  object-fit: cover;
+  background: var(--color-sage-light);
+  flex-shrink: 0;
+  border: 1px solid var(--color-border);
+}
+
+.doctor-card__name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-navy);
+  margin: 0 0 0.25rem;
+}
+
+.doctor-card__specialty {
+  display: inline-block;
+  background: var(--color-navy-soft);
+  color: var(--color-navy);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius-pill);
+}
+
+.doctor-card__details {
+  display: grid;
+  gap: 0.4rem;
+  font-size: 0.86rem;
+  color: var(--color-text-muted);
+  margin-bottom: 1rem;
+  flex: 1;
+}
+
+.doctor-card__detail-item {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.doctor-card__badge-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.5rem;
+  padding-top: 0.75rem;
+  border-top: 1px dashed var(--color-border);
+}
+
+.doctor-card__fee {
+  font-weight: 700;
+  color: var(--color-navy);
+  font-size: 1.05rem;
+}
+
+.doctor-card__select-btn {
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--radius-pill);
+  border: 1.5px solid var(--color-sage);
+  background: transparent;
+  color: var(--color-sage-dark);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.doctor-card.is-selected .doctor-card__select-btn {
+  background: var(--color-sage-dark);
+  color: #ffffff;
+  border-color: var(--color-sage-dark);
+}
+
+.doctor-card__check-indicator {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  width: 22px;
+  height: 22px;
+  border-radius: var(--radius-pill);
+  background: var(--color-sage-dark);
+  color: #ffffff;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+
+.doctor-card.is-selected .doctor-card__check-indicator {
+  display: flex;
+}
+
+/* --------------------------------------------------------------------------
+   Section 2: Date & Time Slot Selection
+   -------------------------------------------------------------------------- */
+.datetime-container {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 2rem;
+}
+
+.date-picker-box {
+  background: var(--color-sage-tint);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+}
+
+.date-picker-box label {
+  display: block;
+  font-weight: 700;
+  color: var(--color-navy);
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.date-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-size: 1rem;
+  background: #ffffff;
+  font-weight: 500;
+}
+
+.doctor-availability-info {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  background: #ffffff;
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--color-sage);
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.slots-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.slots-box__title {
+  font-weight: 700;
+  color: var(--color-navy);
+  margin-bottom: 0.65rem;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.slots-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: 0.65rem;
+}
+
+.slot-btn {
+  padding: 0.75rem 0.6rem;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: #ffffff;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--color-navy);
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.15s ease;
+  position: relative;
+}
+
+.slot-btn:hover:not(.is-booked) {
+  border-color: var(--color-sage);
+  background: var(--color-sage-light);
+  transform: translateY(-1px);
+}
+
+.slot-btn.is-selected {
+  background: var(--color-navy);
+  color: #ffffff;
+  border-color: var(--color-navy);
+  box-shadow: 0 0 0 2px var(--color-sage);
+}
+
+.slot-btn.is-booked {
+  background: #f1f3f5;
+  color: #9aa0a6;
+  border-color: #dadce0;
+  cursor: not-allowed;
+  text-decoration: line-through;
+  opacity: 0.75;
+}
+
+.slot-btn.is-booked::after {
+  content: "Booked";
+  display: block;
+  font-size: 0.65rem;
+  text-decoration: none;
+  color: #d93025;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.slot-notification-banner {
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.88rem;
+  display: none;
+}
+
+.slot-notification-banner.is-active {
+  display: block;
+}
+
+.slot-notification-banner--warning {
+  background: #fff8e1;
+  border: 1px solid #ffe082;
+  color: #8d6e63;
+}
+
+.slot-notification-banner--info {
+  background: var(--color-sage-light);
+  border: 1px solid var(--color-border);
+  color: var(--color-navy);
+}
+
+/* --------------------------------------------------------------------------
+   Section 3: Patient Details Form
+   -------------------------------------------------------------------------- */
+.patient-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+.patient-form-grid .full-width {
+  grid-column: 1 / -1;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.form-group label {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--color-navy);
+}
+
+.form-group label .required-star {
+  color: #c93b2b;
+  margin-left: 2px;
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  padding: 0.7rem 0.9rem;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+  font-family: inherit;
+  background: #ffffff;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: var(--color-sage);
+  box-shadow: 0 0 0 3px var(--color-sage-light);
+}
+
+.form-input.has-error,
+.form-textarea.has-error {
+  border-color: #c93b2b;
+  background: #fffafa;
+}
+
+.field-error-msg {
+  font-size: 0.8rem;
+  color: #c93b2b;
+  font-weight: 600;
+  display: none;
+  margin-top: 0.2rem;
+}
+
+.field-error-msg.is-visible {
+  display: block;
+}
+
+.form-hint {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   Sticky / Fixed Summary Action Bar
+   -------------------------------------------------------------------------- */
+.booking-action-bar {
+  background: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 1.25rem 1.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  box-shadow: var(--shadow-md);
+  margin-bottom: 3rem;
+}
+
+.booking-summary-chips {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.summary-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--color-sage-light);
+  color: var(--color-navy);
+  font-size: 0.88rem;
+  font-weight: 600;
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--radius-pill);
+}
+
+.btn-confirm-appointment {
+  font-size: 1.1rem;
+  font-weight: 700;
+  padding: 0.85rem 2.25rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-navy);
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(22, 45, 80, 0.2);
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-confirm-appointment:hover {
+  background: var(--color-sage-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(72, 105, 80, 0.25);
+}
+
+.btn-confirm-appointment:active {
+  transform: translateY(0);
+}
+
+.btn-clear-draft {
+  background: transparent;
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+  padding: 0.45rem 0.95rem;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-clear-draft:hover {
+  color: var(--color-navy);
+  border-color: var(--color-navy);
+  background: var(--color-sage-tint);
+}
+
+/* --------------------------------------------------------------------------
+   Confirmation Modal / Fallback Alert (In-page Success)
+   -------------------------------------------------------------------------- */
+.booking-alert-toast {
+  background: var(--color-navy);
+  color: #ffffff;
+  padding: 1rem 1.25rem;
+  border-radius: var(--radius-sm);
+  display: none;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.booking-alert-toast.is-visible {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* --------------------------------------------------------------------------
+   Responsive Rules
+   -------------------------------------------------------------------------- */
+@media (max-width: 900px) {
+  .datetime-container {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .booking-steps {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .booking-step-item:not(:last-child)::after {
+    display: none;
+  }
+
+  .booking-action-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn-confirm-appointment {
+    justify-content: center;
+    width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .doctors-cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .patient-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .booking-section {
+    padding: 1.25rem;
+  }
+}
