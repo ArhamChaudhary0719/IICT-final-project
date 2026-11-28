@@ -52,14 +52,18 @@ body {
 /* 2. Visible Keyboard Focus Outlines (Accessibility) */
 a:focus,
 button:focus,
-input:focus {
+input:focus,
+select:focus,
+textarea:focus {
   outline: 3px solid var(--focus-color);
   outline-offset: 2px;
 }
 
 a:focus-visible,
 button:focus-visible,
-input:focus-visible {
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
   outline: 3px solid var(--focus-color);
   outline-offset: 2px;
 }
@@ -553,7 +557,387 @@ main.container {
   font-size: 0.84rem;
 }
 
-/* 10. Mobile Responsive Rules */
+/* 10. Reschedule Appointment Page */
+body.reschedule-page {
+  --focus-color: var(--navy-primary);
+  accent-color: var(--navy-primary);
+}
+
+.reschedule-page a:focus,
+.reschedule-page a:focus-visible,
+.reschedule-page a:active,
+.reschedule-page button:focus,
+.reschedule-page button:focus-visible,
+.reschedule-page button:active,
+.reschedule-page input:focus,
+.reschedule-page input:focus-visible,
+.reschedule-page input:active,
+.reschedule-page select:focus,
+.reschedule-page select:focus-visible,
+.reschedule-page select:active,
+.reschedule-page textarea:focus,
+.reschedule-page textarea:focus-visible,
+.reschedule-page textarea:active {
+  outline: 3px solid var(--navy-primary);
+  outline-offset: 2px;
+}
+
+.reschedule-page .skip-link:focus,
+.reschedule-page .skip-link:focus-visible {
+  outline: 3px solid var(--sage-primary);
+  outline-offset: 2px;
+}
+
+.reschedule-page .site-footer a:focus,
+.reschedule-page .site-footer a:focus-visible,
+.reschedule-page .site-footer a:active {
+  outline: 3px solid var(--sage-on-dark);
+  outline-offset: 2px;
+}
+
+.breadcrumb-row {
+  margin-bottom: 0.75rem;
+}
+
+.back-link {
+  display: inline-block;
+  color: var(--navy-primary);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.94rem;
+}
+
+.back-link:hover {
+  color: var(--sage-dark);
+  text-decoration: underline;
+}
+
+.panel-card {
+  background-color: var(--surface);
+  border: 1px solid var(--border-color);
+  border-top: 4px solid var(--sage-primary);
+  border-radius: 10px;
+  padding: 1.4rem;
+  box-shadow: 0 2px 8px rgba(16, 42, 67, 0.06);
+}
+
+.panel-title {
+  font-size: 1.25rem;
+  color: var(--navy-primary);
+  margin-bottom: 0.25rem;
+}
+
+.panel-subtitle {
+  color: var(--text-muted);
+  font-size: 0.94rem;
+  margin-bottom: 1rem;
+}
+
+.selector-panel {
+  margin-bottom: 1.5rem;
+}
+
+.alert-banner {
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+.alert-error {
+  background-color: #e6edf5;
+  color: var(--navy-primary);
+  border: 1.5px solid var(--navy-soft);
+  border-left: 5px solid var(--navy-primary);
+}
+
+.alert-actions {
+  margin-top: 0.85rem;
+}
+
+.reschedule-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.35fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.detail-summary-list {
+  margin-top: 0.85rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 1.25rem;
+}
+
+.form-group label,
+.field-label {
+  font-size: 0.94rem;
+  font-weight: 600;
+  color: var(--navy-primary);
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.68rem 0.85rem;
+  border: 1.5px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 0.96rem;
+  font-family: inherit;
+  color: var(--text-main);
+  background-color: #ffffff;
+}
+
+.form-control:hover {
+  border-color: var(--sage-dark);
+}
+
+.reschedule-page select.form-control,
+.reschedule-page #appointment-select {
+  border-color: var(--sage-primary);
+}
+
+.reschedule-page select.form-control:hover,
+.reschedule-page #appointment-select:hover {
+  border-color: var(--sage-dark);
+}
+
+.reschedule-page .form-control:focus,
+.reschedule-page .form-control:focus-visible,
+.reschedule-page .form-control:active,
+.reschedule-page #appointment-select:focus,
+.reschedule-page #appointment-select:focus-visible,
+.reschedule-page #appointment-select:active {
+  border-color: var(--navy-primary);
+  outline: 3px solid var(--navy-primary);
+  outline-offset: 2px;
+}
+
+.reschedule-page .slot-btn:focus,
+.reschedule-page .slot-btn:focus-visible,
+.reschedule-page .slot-btn:active {
+  border-color: var(--navy-primary);
+  outline: 3px solid var(--navy-primary);
+  outline-offset: 2px;
+}
+
+.field-hint {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.form-error-box {
+  background-color: var(--sage-light);
+  color: var(--navy-primary);
+  border: 1.5px solid var(--sage-primary);
+  border-left: 5px solid var(--navy-primary);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1.1rem;
+  font-size: 0.93rem;
+  font-weight: 600;
+}
+
+.slots-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.slots-summary {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.slots-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(145px, 1fr));
+  gap: 0.65rem;
+  margin-top: 0.35rem;
+}
+
+.slots-empty-note {
+  grid-column: 1 / -1;
+  background-color: var(--sage-tint);
+  border: 1px dashed var(--border-color);
+  border-radius: 8px;
+  padding: 0.9rem 1rem;
+  color: var(--text-muted);
+  font-size: 0.92rem;
+}
+
+.slot-btn {
+  background-color: var(--sage-tint);
+  color: var(--navy-primary);
+  border: 1.5px solid var(--border-color);
+  border-radius: 6px;
+  padding: 0.62rem 0.75rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.slot-btn:hover:not(.slot-unavailable) {
+  background-color: var(--sage-light);
+  border-color: var(--sage-primary);
+}
+
+.slot-btn.selected {
+  background-color: var(--navy-primary);
+  color: #ffffff;
+  border-color: var(--navy-primary);
+}
+
+.slot-btn.slot-unavailable {
+  background-color: #e6edf5;
+  color: var(--navy-soft);
+  border-color: #c2cfde;
+  cursor: pointer;
+  text-decoration: line-through;
+  opacity: 0.9;
+}
+
+.slot-btn.slot-unavailable:hover {
+  background-color: #dbe5f0;
+  border-color: var(--navy-soft);
+}
+
+.slots-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 0.65rem;
+  font-size: 0.84rem;
+  color: var(--text-muted);
+}
+
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.legend-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  display: inline-block;
+  border: 1px solid var(--border-color);
+}
+
+.dot-available {
+  background-color: var(--sage-tint);
+  border-color: var(--sage-primary);
+}
+
+.dot-selected {
+  background-color: var(--navy-primary);
+  border-color: var(--navy-primary);
+}
+
+.dot-booked {
+  background-color: #e6edf5;
+  border-color: #c2cfde;
+}
+
+.slot-message-box {
+  background-color: var(--sage-tint);
+  color: var(--navy-primary);
+  border: 1.5px solid var(--navy-primary);
+  border-left: 5px solid var(--sage-dark);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  margin-top: 0.75rem;
+  font-size: 0.93rem;
+  font-weight: 600;
+}
+
+.form-actions,
+.confirmation-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+
+.primary-btn,
+.secondary-btn {
+  display: inline-block;
+  text-decoration: none;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 0.65rem 1.25rem;
+  border-radius: 6px;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
+}
+
+.primary-btn {
+  background-color: var(--sage-primary);
+  color: #ffffff;
+  border: 1.5px solid var(--sage-primary);
+}
+
+.primary-btn:hover:not(:disabled) {
+  background-color: var(--sage-dark);
+  border-color: var(--sage-dark);
+}
+
+.primary-btn:disabled {
+  background-color: #9cb5a1;
+  border-color: #9cb5a1;
+  color: #ffffff;
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.secondary-btn {
+  background-color: #ffffff;
+  color: var(--navy-primary);
+  border: 1.5px solid var(--border-color);
+}
+
+.secondary-btn:hover {
+  background-color: var(--sage-tint);
+  border-color: var(--sage-primary);
+}
+
+.confirmation-card {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.confirmation-badge {
+  display: inline-block;
+  background-color: var(--sage-light);
+  color: var(--sage-dark);
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  padding: 0.25rem 0.7rem;
+  border-radius: 999px;
+  margin-bottom: 0.65rem;
+}
+
+.confirmation-card h2 {
+  color: var(--navy-primary);
+  font-size: 1.45rem;
+  margin-bottom: 0.35rem;
+}
+
+/* 11. Mobile Responsive Rules */
 @media (max-width: 768px) {
   .header-inner {
     flex-wrap: wrap;
@@ -591,8 +975,13 @@ main.container {
     font-size: 1.65rem;
   }
 
-  .appointments-grid {
+  .appointments-grid,
+  .reschedule-layout {
     grid-template-columns: 1fr;
+  }
+
+  .slots-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .footer-inner,
