@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DocEase Clinic | Booking Confirmation</title>
+  <meta name="description" content="Your DocEase Clinic appointment has been confirmed. View your booking ID, doctor details, date and time slot, and patient summary.">
+  <link rel="icon" type="image/jpeg" href="images/logo.jpg">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/booking.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <!-- Header: Shared DocEase Navbar -->
+  <header class="site-header">
+    <div class="container nav-wrapper">
+      <a class="brand" href="index.html">
+        <img class="brand__logo" src="images/logo.jpg" alt="DocEase Clinic logo">
+        <span>
+          DocEase
+          <span class="brand__sub">Clinic</span>
+        </span>
+      </a>
+
+      <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="navMenu" aria-label="Toggle navigation menu">
+        Menu
+      </button>
+
+      <nav class="nav-center" aria-label="Primary navigation">
+        <ul class="nav-menu" id="navMenu">
+          <li><a class="nav-link" href="index.html">Home</a></li>
+          <li><a class="nav-link" href="finddoctor.html">Find Doctor</a></li>
+          <li><a class="nav-link" href="doctorprofile.html">Doctor Profile</a></li>
+          <li><a class="nav-link is-active" href="book-appointment.html" aria-current="page">Book Appointment</a></li>
+        </ul>
+      </nav>
+
+      <a class="nav-phone" href="tel:+15552348900" aria-label="Call clinic phone number">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+        </svg>
+        (555) 234-8900
+      </a>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <div class="container">
+
+      <!-- Breadcrumbs & Step Navigation (Matches Wireframe Navigation) -->
+      <nav class="booking-steps-wrapper" aria-label="Appointment booking steps">
+        <ol class="booking-steps">
+          <li class="booking-step-item is-completed">
+            <span class="booking-step-number">&#10003;</span>
+            <a href="book-appointment.html" style="color:inherit;text-decoration:none;">Book Appointment</a>
+          </li>
+          <li class="booking-step-item is-active" aria-current="step">
+            <span class="booking-step-number">2</span>
+            <span>Booking Confirmation</span>
+            <span class="booking-step-tag">Current</span>
+          </li>
+          <li class="booking-step-item">
+            <span class="booking-step-number">3</span>
+            <span>Appointment Details</span>
+          </li>
+        </ol>
+      </nav>
+
+      <!-- Main Heading (Matches Wireframe: Booking Confirmation) -->
+      <h1 class="booking-page-title">Booking Confirmation</h1>
+      <p class="booking-page-subtitle">
+        Your appointment request has been processed and confirmed in our clinic management system.
+      </p>
+
+      <div class="confirmation-container">
+
+        <!-- ================================================================
+             CARD 1: Confirmed Status Card (Matches Wireframe Box 1)
+             ================================================================ -->
+        <section class="confirmed-status-card" aria-label="Appointment Confirmation Status">
+          <div class="confirmed-icon-circle" aria-hidden="true">&#10003;</div>
+          <h2 class="confirmed-status-title">Appointment Confirmed!</h2>
+          <div class="confirmed-booking-id-row">
+            <span>Booking ID:</span>
+            <strong id="confirmedBookingIdDisplay">#DE-11829</strong>
+          </div>
+        </section>
+
+        <!-- ================================================================
+             CARD 2: Appointment Summary Card (Matches Wireframe Box 2)
+             ================================================================ -->
+        <section class="confirmation-summary-card" aria-labelledby="summaryHeading">
+          <div class="confirmation-summary-header">
+            <h2 class="confirmation-summary-title" id="summaryHeading">Summary</h2>
+            <span class="confirmation-status-pill">&#9679; Confirmed</span>
+          </div>
+
+          <!-- Summary Fields matching wireframe -->
+          <ul class="summary-rows-list">
+            <li class="summary-data-row">
+              <span class="summary-data-label">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                Booking ID:
+              </span>
+              <span class="summary-data-value" id="summaryBookingId">#DE-11829</span>
+            </li>
+
+            <li class="summary-data-row">
+              <span class="summary-data-label">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                Doctor:
+              </span>
+              <span class="summary-data-value" id="summaryDoctor">Dr. Ayesha Khan (Cardiology)</span>
+            </li>
+
+            <li class="summary-data-row">
+              <span class="summary-data-label">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                Date &amp; Time Slot:
+              </span>
+              <span class="summary-data-value" id="summaryDateTime">Dec 5, 2026 at 10:30 AM</span>
+            </li>
+
+            <li class="summary-data-row">
+              <span class="summary-data-label">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="23" y1="11" x2="17" y2="11"></line></svg>
+                Patient Name:
+              </span>
+              <span class="summary-data-value" id="summaryPatientName">Daniyal Imran</span>
+            </li>
+
+            <li class="summary-data-row">
+              <span class="summary-data-label">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                Phone Number:
+              </span>
+              <span class="summary-data-value" id="summaryPhoneNumber">(555) 234-8900</span>
+            </li>
+          </ul>
+
+          <!-- Wireframe "Thank you!" Callout Box -->
+          <div class="confirmation-thank-you-box" role="note">
+            <h3 class="confirmation-thank-you-title">Thank you!</h3>
+            <p class="confirmation-thank-you-text">
+              Thank you for trusting DocEase Clinic. An automated confirmation SMS and digital appointment card have been issued. Please arrive 10 minutes prior to your consultation time.
+            </p>
+          </div>
+
+          <!-- Bottom Action Buttons (Matches Wireframe) -->
+          <div class="confirmation-action-buttons">
+            <a href="book-appointment.html" id="bookAnotherBtn" class="btn-book-another">
+              &larr; Book Another Appointment
+            </a>
+            <a href="appointment-details.html" id="viewDetailsBtn" class="btn-view-details">
+              View Appointment Detail &rarr;
+            </a>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer: Shared DocEase Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">
+            <img class="footer-brand__logo" src="images/logo.jpg" alt="DocEase Clinic logo">
+            <span>DocEase Clinic</span>
+          </div>
+          <p style="margin:0;font-size:0.9rem;max-width:300px;">
+            Patient-first primary and specialty healthcare built around your family.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="footer-heading">Pages</h3>
+          <ul class="footer-lines">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="finddoctor.html">Find Doctor</a></li>
+            <li><a href="doctorprofile.html">Doctor Profile</a></li>
+            <li><a href="book-appointment.html">Book Appointment</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer-heading">Clinic Info</h3>
+          <ul class="footer-lines">
+            <li>420 Wellness Avenue, Suite 200</li>
+            <li>Phone: (555) 234-8900</li>
+            <li>Email: care@doceaseclinic.example</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>&copy; <span id="currentYear">2026</span> DocEase Clinic. All rights reserved.</span>
+        <span>Mon–Sat 8:00 AM – 8:00 PM | Sun 9:00 AM – 3:00 PM</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/confirmation.js"></script>
+</body>
+</html>

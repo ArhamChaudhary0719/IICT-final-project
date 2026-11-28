@@ -669,9 +669,9 @@
     // Success feedback and transition to Page 2
     showTopAlert(`Appointment Confirmed! Booking ID: ${bookingId}. Redirecting...`);
 
-    // Redirect to Page 2 (Booking Confirmed)
+    // Redirect to Page 2 (Booking Confirmation)
     setTimeout(function () {
-      window.location.href = `booking-confirmed.html?id=${encodeURIComponent(bookingId)}`;
+      window.location.href = `booking-confirmation.html?id=${encodeURIComponent(bookingId)}`;
     }, 900);
   }
 
