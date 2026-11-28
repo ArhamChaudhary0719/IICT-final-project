@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DocEase Clinic | Clinic Locations</title>
+  <meta name="description" content="Find a DocEase Clinic location near you including DocEase South Jay, DocEase Town Center, and DocEase Hylo East. Search clinics, view the locations map, and book an appointment.">
+  <link rel="icon" type="image/jpeg" href="images/logo.jpg">
+  <link rel="stylesheet" href="css/clinic-locations.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <!-- Header: Shared DocEase Navbar -->
+  <header class="site-header">
+    <div class="container nav-wrapper">
+      <a class="brand" href="index.html">
+        <img class="brand__logo" src="images/logo.jpg" alt="DocEase Clinic logo">
+        <span>
+          DocEase
+          <span class="brand__sub">Clinic</span>
+        </span>
+      </a>
+
+      <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="navMenu" aria-label="Toggle navigation menu">
+        Menu
+      </button>
+
+      <nav class="nav-center" aria-label="Primary navigation">
+        <ul class="nav-menu" id="navMenu">
+          <li><a class="nav-link" href="index.html">Home</a></li>
+          <li><a class="nav-link" href="services.html">Services &amp; Specialties</a></li>
+          <li><a class="nav-link is-active" href="clinic-locations.html" aria-current="page">Clinic Locations</a></li>
+          <li><a class="nav-link" href="finddoctor.html">Find Doctor</a></li>
+          <li><a class="nav-link" href="doctorprofile.html">Doctor Profile</a></li>
+        </ul>
+      </nav>
+
+      <a class="nav-phone" href="tel:+15552348900" aria-label="Call clinic phone number">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+        </svg>
+        (555) 234-8900
+      </a>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <!-- Clinic Locations Split Layout: Left Clinic Cards + Right Search Bar & Map -->
+    <section class="locations-section" aria-labelledby="locations-heading">
+      <div class="container locations-layout">
+        <!-- Left Column: Heading + Three Clinic Cards -->
+        <div class="locations-list-col">
+          <div class="locations-header">
+            <h1 class="locations-heading" id="locations-heading">Find DocEase nearest you:</h1>
+            <p class="search-status" id="searchStatus" aria-live="polite" hidden></p>
+          </div>
+
+          <div class="clinic-cards" id="clinicCards">
+            <article
+              class="clinic-card"
+              data-clinic-name="DocEase South Jay"
+              data-clinic-address="420 Wellness Avenue"
+              data-clinic-phone="(555) 234-8900"
+            >
+              <div class="clinic-card__body">
+                <h2 class="clinic-card__name">DocEase South Jay</h2>
+                <p class="clinic-card__info">
+                  <svg class="clinic-card__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                    <circle cx="12" cy="10" r="3"/>
+                  </svg>
+                  <span>420 Wellness Avenue</span>
+                </p>
+                <p class="clinic-card__info">
+                  <svg class="clinic-card__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                  </svg>
+                  <a class="clinic-card__phone" href="tel:+15552348900">555 234-8900</a>
+                </p>
+              </div>
+              <div class="clinic-card__footer">
+                <button
+                  class="book-btn"
+                  type="button"
+                  data-clinic="DocEase South Jay"
+                  data-address="420 Wellness Avenue"
+                  data-phone="(555) 234-8900"
+                >
+                  Book an Appointment
+                </button>
+              </div>
+            </article>
+
+            <article
+              class="clinic-card"
+              data-clinic-name="DocEase Town Center"
+              data-clinic-address="4906 Town Center Ste 4"
+              data-clinic-phone="904-444-1568"
+            >
+              <div class="clinic-card__body">
+                <h2 class="clinic-card__name">DocEase Town Center</h2>
+                <p class="clinic-card__info">
+                  <svg class="clinic-card__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                    <circle cx="12" cy="10" r="3"/>
+                  </svg>
+                  <span>4906 Town Center Ste 4</span>
+                </p>
+                <p class="clinic-card__info">
+                  <svg class="clinic-card__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                  </svg>
+                  <a class="clinic-card__phone" href="tel:+19044441568">904-444-1568</a>
+                </p>
+              </div>
+              <div class="clinic-card__footer">
+                <button
+                  class="book-btn"
+                  type="button"
+                  data-clinic="DocEase Town Center"
+                  data-address="4906 Town Center Ste 4"
+                  data-phone="904-444-1568"
+                >
+                  Book an Appointment
+                </button>
+              </div>
+            </article>
+
+            <article
+              class="clinic-card"
+              data-clinic-name="DocEase Hylo East"
+              data-clinic-address="5838-E Central Ave"
+              data-clinic-phone="904-444-1592"
+            >
+              <div class="clinic-card__body">
+                <h2 class="clinic-card__name">DocEase Hylo East</h2>
+                <p class="clinic-card__info">
+                  <svg class="clinic-card__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                    <circle cx="12" cy="10" r="3"/>
+                  </svg>
+                  <span>5838-E Central Ave</span>
+                </p>
+                <p class="clinic-card__info">
+                  <svg class="clinic-card__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                  </svg>
+                  <a class="clinic-card__phone" href="tel:+19044441592">904-444-1592</a>
+                </p>
+              </div>
+              <div class="clinic-card__footer">
+                <button
+                  class="book-btn"
+                  type="button"
+                  data-clinic="DocEase Hylo East"
+                  data-address="5838-E Central Ave"
+                  data-phone="904-444-1592"
+                >
+                  Book an Appointment
+                </button>
+              </div>
+            </article>
+          </div>
+
+          <!-- Helpful Empty State when search yields no clinics -->
+          <div class="empty-state" id="noClinicsMessage" hidden role="status" aria-live="polite">
+            <h2 class="empty-state__title">No matching clinics found</h2>
+            <p class="empty-state__desc" id="noClinicsDetail">
+              We couldn&rsquo;t find a clinic matching your search. Try searching by clinic name (South Jay, Town Center, Hylo East), street address, or phone number.
+            </p>
+            <button class="empty-state__btn" id="resetSearchBtn" type="button">
+              Show All Clinics
+            </button>
+          </div>
+        </div>
+
+        <!-- Right Column: Search Bar Above Large Map Image -->
+        <div class="locations-map-col">
+          <form class="clinic-search" id="clinicSearchForm" role="search" aria-label="Search clinic locations">
+            <svg class="clinic-search__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <label class="sr-only" for="clinicSearchInput">Search clinics by name, address, or phone</label>
+            <input
+              class="clinic-search__input"
+              id="clinicSearchInput"
+              type="search"
+              placeholder="Search clinics by name, address, or phone..."
+              autocomplete="off"
+            >
+            <button class="clinic-search__clear" id="clearSearchBtn" type="button" aria-label="Clear search" hidden>
+              Clear
+            </button>
+            <button class="clinic-search__btn" type="submit">Search</button>
+          </form>
+
+          <figure class="map-card">
+            <img
+              class="map-card__img"
+              src="images/map image.png"
+              alt="Illustrated map showing approximate DocEase clinic areas"
+            >
+            <figcaption class="map-card__caption">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              AI-generated map illustration &mdash; not an accurate representation of clinic locations.
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Appointment Booking Modal (Fallback Flow for Book an Appointment buttons) -->
+  <div
+    class="modal-backdrop"
+    id="bookingModal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="bookingModalTitle"
+    hidden
+  >
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div>
+          <p class="modal-eyebrow">Appointment Request</p>
+          <h2 class="modal-title" id="bookingModalTitle">Book an Appointment</h2>
+        </div>
+        <button class="modal-close" id="closeModalBtn" type="button" aria-label="Close appointment modal">
+          &times;
+        </button>
+      </div>
+
+      <div class="modal-clinic-summary" id="modalClinicSummary">
+        <strong id="modalClinicName">DocEase Clinic</strong>
+        <span id="modalClinicDetails"></span>
+      </div>
+
+      <form class="modal-form" id="bookingForm">
+        <div class="form-field">
+          <label for="bookingSpecialty">Department / Specialty</label>
+          <select id="bookingSpecialty" required>
+            <option value="General Medicine">General Medicine</option>
+            <option value="Cardiology">Cardiology</option>
+            <option value="Orthopedics">Orthopedics</option>
+            <option value="Dental Care">Dental Care</option>
+            <option value="Mental Health">Mental Health</option>
+            <option value="Vaccination">Vaccination</option>
+            <option value="Pediatrics">Pediatrics</option>
+            <option value="Dermatology">Dermatology</option>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <div class="form-field">
+            <label for="bookingDate">Preferred Date</label>
+            <input id="bookingDate" type="date" required>
+          </div>
+          <div class="form-field">
+            <label for="bookingTime">Preferred Time</label>
+            <select id="bookingTime" required>
+              <option value="09:00 AM">09:00 AM</option>
+              <option value="10:30 AM">10:30 AM</option>
+              <option value="12:00 PM">12:00 PM</option>
+              <option value="02:30 PM">02:30 PM</option>
+              <option value="04:30 PM">04:30 PM</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-field">
+            <label for="patientName">Patient Name</label>
+            <input id="patientName" type="text" placeholder="Enter full name" required>
+          </div>
+          <div class="form-field">
+            <label for="patientPhone">Phone Number</label>
+            <input id="patientPhone" type="tel" placeholder="(555) 000-0000" required>
+          </div>
+        </div>
+
+        <div class="modal-actions">
+          <a class="modal-link-btn" id="findDoctorLink" href="finddoctor.html">
+            Choose a Doctor Instead
+          </a>
+          <button class="book-btn" type="submit">Confirm Request</button>
+        </div>
+      </form>
+
+      <div class="modal-confirmation" id="bookingConfirmation" hidden>
+        <div class="confirmation-badge" aria-hidden="true">&#10003;</div>
+        <h3>Appointment Request Received</h3>
+        <p id="confirmationMessage"></p>
+        <div class="modal-actions">
+          <a class="modal-link-btn" href="finddoctor.html">Browse Doctors</a>
+          <button class="book-btn" id="doneBookingBtn" type="button">Done</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer: Shared DocEase Navy-Blue Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">
+            <img class="footer-brand__logo" src="images/logo.jpg" alt="DocEase Clinic logo">
+            <span>DocEase Clinic</span>
+          </div>
+          <p class="footer-tagline">
+            Patient-first primary and specialty healthcare built around your family.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="footer-heading">Pages</h3>
+          <ul class="footer-lines">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services &amp; Specialties</a></li>
+            <li><a href="clinic-locations.html">Clinic Locations</a></li>
+            <li><a href="finddoctor.html">Find Doctor</a></li>
+            <li><a href="doctorprofile.html">Doctor Profile</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer-heading">Clinic Info</h3>
+          <ul class="footer-lines">
+            <li>420 Wellness Avenue, Suite 200</li>
+            <li>Phone: (555) 234-8900</li>
+            <li>Email: care@doceaseclinic.example</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>&copy; <span id="currentYear">2026</span> DocEase Clinic.</span>
+        <span>Mon&ndash;Sat 8:00 AM &ndash; 8:00 PM | Sun 9:00 AM &ndash; 3:00 PM</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/clinic-locations.js"></script>
+</body>
+</html>
