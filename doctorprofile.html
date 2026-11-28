@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DocEase Clinic | Doctor Profile</title>
+  <meta name="description" content="DocEase Clinic Doctor Profile — view physician credentials, biography, consultation fees, availability, visit formats, and book an appointment.">
+  <link rel="icon" type="image/jpeg" href="images/logo.jpg">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <!-- Header: Logo/Name (Left) | Home, Find Doctor, Doctor Profile (Center) | Phone No. (Right) -->
+  <header class="site-header">
+    <div class="container nav-wrapper">
+      <a class="brand" href="index.html">
+        <img class="brand__logo" src="images/logo.jpg" alt="DocEase Clinic logo">
+        <span>
+          DocEase
+          <span class="brand__sub">Clinic</span>
+        </span>
+      </a>
+
+      <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="navMenu" aria-label="Toggle navigation menu">
+        Menu
+      </button>
+
+      <nav class="nav-center" aria-label="Primary navigation">
+        <ul class="nav-menu" id="navMenu">
+          <li><a class="nav-link" href="index.html">Home</a></li>
+          <li><a class="nav-link" href="finddoctor.html">Find Doctor</a></li>
+          <li><a class="nav-link is-active" href="doctorprofile.html" aria-current="page">Doctor Profile</a></li>
+        </ul>
+      </nav>
+
+      <a class="nav-phone" href="tel:+15552348900" aria-label="Call clinic phone number">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+        </svg>
+        (555) 234-8900
+      </a>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <!-- Top Utility Bar: Back to Find Doctor (Left) | Switch Physician Dropdown (Right) -->
+    <section class="profile-topbar-section">
+      <div class="container">
+        <div class="profile-topbar">
+          <a class="back-link" href="finddoctor.html">
+            <span aria-hidden="true">&larr;</span>
+            <span>Back to Find Doctor</span>
+          </a>
+
+          <div class="physician-switcher">
+            <label class="physician-switcher__label" for="physicianSwitch">Switch Physician</label>
+            <select class="physician-select" id="physicianSwitch" aria-label="Switch physician profile"></select>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Doctor Profile Content (2-Column Prototype Layout) -->
+    <section class="section profile-section">
+      <div class="container">
+        <div class="profile-grid">
+          <!-- Left Column: Picture of Selected Doctor + Biography -->
+          <aside class="profile-sidebar">
+            <div class="profile-photo-card" id="doctorPortraitCard"></div>
+
+            <div class="profile-bio-card">
+              <h2 class="profile-section-heading">Biography</h2>
+              <p class="profile-bio-text" id="doctorBioText"></p>
+
+              <div class="profile-edu-block">
+                <h3 class="profile-subheading">Education &amp; Training</h3>
+                <ul class="profile-edu-list" id="doctorEducationList"></ul>
+              </div>
+            </div>
+          </aside>
+
+          <!-- Right Column: Short Intro | Name & Qualifications | Details | 3 Stat Boxes | Actions -->
+          <div class="profile-main">
+            <!-- Short intro of doctor -->
+            <div class="profile-intro-bar" id="doctorIntroBar"></div>
+
+            <!-- Doctor Name and Qualifications + 3 highlight lines -->
+            <div class="profile-header-card">
+              <h1 class="profile-name" id="doctorName"></h1>
+              <p class="profile-qualifications" id="doctorCredentials"></p>
+              <div class="profile-highlights" id="doctorHighlights"></div>
+            </div>
+
+            <!-- Doctor details -->
+            <div class="profile-details-card">
+              <h2 class="profile-section-heading">Doctor details:</h2>
+              <div class="profile-details-grid" id="doctorDetailsGrid"></div>
+            </div>
+
+            <!-- 3 Summary Boxes: Consultation fees | Next Available | Visit Format -->
+            <div class="profile-metrics-grid" aria-label="Consultation summary">
+              <div class="profile-metric-box">
+                <span class="profile-metric-box__label">Consultation fees</span>
+                <strong class="profile-metric-box__value" id="metricFee"></strong>
+                <span class="profile-metric-box__sub">Per standard visit</span>
+              </div>
+
+              <div class="profile-metric-box profile-metric-box--sage">
+                <span class="profile-metric-box__label">Next Available</span>
+                <strong class="profile-metric-box__value" id="metricAvailable"></strong>
+                <span class="profile-metric-box__sub" id="metricScheduleDays"></span>
+              </div>
+
+              <div class="profile-metric-box">
+                <span class="profile-metric-box__label">Visit Format</span>
+                <strong class="profile-metric-box__value" id="metricFormat"></strong>
+                <span class="profile-metric-box__sub" id="metricLocationSub"></span>
+              </div>
+            </div>
+
+            <!-- Bottom Action Row: Book Appointment (Left) | Compare fee (Right) -->
+            <div class="profile-actions-row">
+              <button type="button" class="btn-primary btn-book-appointment" id="bookAppointmentBtn">
+                Book Appointment
+              </button>
+
+              <button type="button" class="btn-compare-fee" id="compareFeeBtn">
+                <span>Compare fee</span>
+                <span aria-hidden="true">&rarr;</span>
+              </button>
+            </div>
+
+            <!-- Patient Reviews Strip -->
+            <div class="profile-reviews-card">
+              <div class="profile-reviews-card__head">
+                <h2 class="profile-section-heading" style="margin:0;">Patient Feedback</h2>
+                <span class="profile-reviews-score" id="reviewsScoreBadge"></span>
+              </div>
+              <div class="profile-reviews-list" id="doctorReviewsList"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Book Appointment Modal -->
+  <div class="modal-backdrop" id="bookingModal" hidden aria-hidden="true">
+    <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="bookingModalTitle">
+      <div class="modal-header">
+        <div>
+          <span class="modal-eyebrow">DocEase Appointment Desk</span>
+          <h2 class="modal-title" id="bookingModalTitle">Book Appointment</h2>
+        </div>
+        <button type="button" class="modal-close" id="closeBookingModal" aria-label="Close booking dialog">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="booking-doctor-summary" id="bookingDoctorSummary"></div>
+
+        <form class="booking-form" id="bookingForm">
+          <div class="booking-form-row">
+            <div class="form-field">
+              <label for="bookingFormatSelect">Visit Format</label>
+              <select id="bookingFormatSelect" required></select>
+            </div>
+            <div class="form-field">
+              <label for="bookingDateInput">Preferred Date</label>
+              <input type="date" id="bookingDateInput" required>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <span class="form-label">Select Time Slot</span>
+            <div class="slot-pills" id="bookingTimeSlots" role="radiogroup" aria-label="Available time slots"></div>
+          </div>
+
+          <div class="booking-form-row">
+            <div class="form-field">
+              <label for="patientNameInput">Patient Full Name</label>
+              <input type="text" id="patientNameInput" placeholder="e.g., Jordan Taylor" required>
+            </div>
+            <div class="form-field">
+              <label for="patientPhoneInput">Phone Number</label>
+              <input type="tel" id="patientPhoneInput" placeholder="(555) 000-0000" required>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label for="visitNotesInput">Reason for Visit (Optional)</label>
+            <textarea id="visitNotesInput" rows="2" placeholder="Briefly describe symptoms or checkup goal..."></textarea>
+          </div>
+
+          <div class="modal-footer-actions">
+            <button type="button" class="btn-secondary" id="cancelBookingBtn">Cancel</button>
+            <button type="submit" class="btn-primary">Confirm Appointment</button>
+          </div>
+        </form>
+
+        <div class="booking-confirmation" id="bookingConfirmation" hidden>
+          <div class="booking-confirmation__badge">&#10003; Appointment Confirmed</div>
+          <h3 id="confirmationHeading">Your visit is scheduled</h3>
+          <p id="confirmationDetails"></p>
+          <div class="modal-footer-actions">
+            <button type="button" class="btn-secondary" id="bookAnotherBtn">Book Another Slot</button>
+            <button type="button" class="btn-primary" id="doneBookingBtn">Done</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Compare Consultation Fees Modal -->
+  <div class="modal-backdrop" id="compareFeeModal" hidden aria-hidden="true">
+    <div class="modal-dialog modal-dialog--wide" role="dialog" aria-modal="true" aria-labelledby="compareFeeModalTitle">
+      <div class="modal-header">
+        <div>
+          <span class="modal-eyebrow">Transparent Clinic Pricing</span>
+          <h2 class="modal-title" id="compareFeeModalTitle">Compare Consultation Fees</h2>
+        </div>
+        <button type="button" class="modal-close" id="closeCompareModal" aria-label="Close fee comparison dialog">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="compare-toolbar">
+          <p class="compare-summary" id="compareFeeSummary"></p>
+          <div class="compare-sort">
+            <label for="compareSortSelect">Sort by:</label>
+            <select id="compareSortSelect">
+              <option value="default">Directory Order</option>
+              <option value="fee-asc">Lowest Fee First</option>
+              <option value="fee-desc">Highest Fee First</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="compare-table-wrap">
+          <table class="compare-table">
+            <thead>
+              <tr>
+                <th>Physician</th>
+                <th>Specialty</th>
+                <th>Consultation Fee</th>
+                <th>Next Available</th>
+                <th>Visit Format</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="compareFeeTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer: Logo/Name (Left) | Pages (Center) | Clinic Info (Right) -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">
+            <img class="footer-brand__logo" src="images/logo.jpg" alt="DocEase Clinic logo">
+            <span>DocEase Clinic</span>
+          </div>
+          <p style="margin:0;font-size:0.9rem;max-width:300px;">
+            Patient-first primary and specialty healthcare built around your family.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="footer-heading">Pages</h3>
+          <ul class="footer-lines">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="finddoctor.html">Find Doctor</a></li>
+            <li><a href="doctorprofile.html">Doctor Profile</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer-heading">Clinic Info</h3>
+          <ul class="footer-lines">
+            <li>420 Wellness Avenue, Suite 200</li>
+            <li>Phone: (555) 234-8900</li>
+            <li>Email: care@doceaseclinic.example</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>&copy; <span id="currentYear">2026</span> DocEase Clinic.</span>
+        <span>Mon&ndash;Sat 8:00 AM &ndash; 8:00 PM | Sun 9:00 AM &ndash; 3:00 PM</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
