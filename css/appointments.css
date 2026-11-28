@@ -557,10 +557,18 @@ main.container {
   font-size: 0.84rem;
 }
 
-/* 10. Reschedule Appointment Page */
-body.reschedule-page {
+/* 10. Reschedule & Cancel Appointment Pages */
+body.reschedule-page,
+body.cancel-page {
   --focus-color: var(--navy-primary);
   accent-color: var(--navy-primary);
+}
+
+body.cancel-page {
+  --danger-bg: #e6edf5;
+  --danger-text: var(--navy-primary);
+  --danger-border: var(--navy-soft);
+  accent-color: var(--sage-dark);
 }
 
 .reschedule-page a:focus,
@@ -577,20 +585,40 @@ body.reschedule-page {
 .reschedule-page select:active,
 .reschedule-page textarea:focus,
 .reschedule-page textarea:focus-visible,
-.reschedule-page textarea:active {
+.reschedule-page textarea:active,
+.cancel-page a:focus,
+.cancel-page a:focus-visible,
+.cancel-page a:active,
+.cancel-page button:focus,
+.cancel-page button:focus-visible,
+.cancel-page button:active,
+.cancel-page input:focus,
+.cancel-page input:focus-visible,
+.cancel-page input:active,
+.cancel-page select:focus,
+.cancel-page select:focus-visible,
+.cancel-page select:active,
+.cancel-page textarea:focus,
+.cancel-page textarea:focus-visible,
+.cancel-page textarea:active {
   outline: 3px solid var(--navy-primary);
   outline-offset: 2px;
 }
 
 .reschedule-page .skip-link:focus,
-.reschedule-page .skip-link:focus-visible {
+.reschedule-page .skip-link:focus-visible,
+.cancel-page .skip-link:focus,
+.cancel-page .skip-link:focus-visible {
   outline: 3px solid var(--sage-primary);
   outline-offset: 2px;
 }
 
 .reschedule-page .site-footer a:focus,
 .reschedule-page .site-footer a:focus-visible,
-.reschedule-page .site-footer a:active {
+.reschedule-page .site-footer a:active,
+.cancel-page .site-footer a:focus,
+.cancel-page .site-footer a:focus-visible,
+.cancel-page .site-footer a:active {
   outline: 3px solid var(--sage-on-dark);
   outline-offset: 2px;
 }
@@ -655,7 +683,8 @@ body.reschedule-page {
   margin-top: 0.85rem;
 }
 
-.reschedule-layout {
+.reschedule-layout,
+.cancel-layout {
   display: grid;
   grid-template-columns: 1fr 1.35fr;
   gap: 1.5rem;
@@ -696,12 +725,16 @@ body.reschedule-page {
 }
 
 .reschedule-page select.form-control,
-.reschedule-page #appointment-select {
+.reschedule-page #appointment-select,
+.cancel-page select.form-control,
+.cancel-page #appointment-select {
   border-color: var(--sage-primary);
 }
 
 .reschedule-page select.form-control:hover,
-.reschedule-page #appointment-select:hover {
+.reschedule-page #appointment-select:hover,
+.cancel-page select.form-control:hover,
+.cancel-page #appointment-select:hover {
   border-color: var(--sage-dark);
 }
 
@@ -710,7 +743,13 @@ body.reschedule-page {
 .reschedule-page .form-control:active,
 .reschedule-page #appointment-select:focus,
 .reschedule-page #appointment-select:focus-visible,
-.reschedule-page #appointment-select:active {
+.reschedule-page #appointment-select:active,
+.cancel-page .form-control:focus,
+.cancel-page .form-control:focus-visible,
+.cancel-page .form-control:active,
+.cancel-page #appointment-select:focus,
+.cancel-page #appointment-select:focus-visible,
+.cancel-page #appointment-select:active {
   border-color: var(--navy-primary);
   outline: 3px solid var(--navy-primary);
   outline-offset: 2px;
@@ -937,6 +976,100 @@ body.reschedule-page {
   margin-bottom: 0.35rem;
 }
 
+/* Cancel Appointment Controls (Strictly Sage Green & Navy Blue) */
+.cancel-page .status-cancelled {
+  background-color: #e6edf5;
+  color: var(--navy-primary);
+  border: 1px solid var(--navy-soft);
+}
+
+.cancel-page .confirmation-badge {
+  background-color: #e6edf5;
+  color: var(--navy-primary);
+  border: 1px solid var(--navy-soft);
+}
+
+.confirm-box {
+  background-color: var(--sage-tint);
+  border: 1.5px solid var(--sage-primary);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.confirm-box-text {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+}
+
+.confirm-checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--navy-primary);
+  cursor: pointer;
+}
+
+.confirm-checkbox-label input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  margin-top: 0.2rem;
+  flex-shrink: 0;
+  cursor: pointer;
+  accent-color: var(--sage-dark);
+}
+
+.confirm-prompt-box {
+  background-color: #e6edf5;
+  border: 1.5px solid var(--navy-primary);
+  border-left: 5px solid var(--sage-dark);
+  border-radius: 8px;
+  padding: 1.1rem;
+  margin-top: 1.1rem;
+}
+
+.confirm-prompt-title {
+  color: var(--navy-primary);
+  font-size: 1.05rem;
+  margin-bottom: 0.35rem;
+}
+
+.confirm-prompt-text {
+  color: var(--text-main);
+  font-size: 0.93rem;
+  margin-bottom: 0.95rem;
+}
+
+.confirm-prompt-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.navy-primary-btn {
+  display: inline-block;
+  text-decoration: none;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 0.65rem 1.25rem;
+  border-radius: 6px;
+  cursor: pointer;
+  text-align: center;
+  background-color: var(--navy-primary);
+  color: #ffffff;
+  border: 1.5px solid var(--navy-primary);
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.navy-primary-btn:hover {
+  background-color: var(--navy-dark);
+  border-color: var(--navy-dark);
+}
+
 /* 11. Mobile Responsive Rules */
 @media (max-width: 768px) {
   .header-inner {
@@ -976,7 +1109,8 @@ body.reschedule-page {
   }
 
   .appointments-grid,
-  .reschedule-layout {
+  .reschedule-layout,
+  .cancel-layout {
     grid-template-columns: 1fr;
   }
 
