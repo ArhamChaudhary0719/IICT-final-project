@@ -58,7 +58,7 @@
 
         <div class="directory-hero__lines">
           <p>Search board-certified physicians by name, department specialty, or clinical focus area.</p>
-          <p>Filter by years of experience and weekly clinic availability before viewing a full doctor profile.</p>
+          <p>Filter by years of experience, visit format, and availability before opening a full doctor profile to compare fees or book.</p>
         </div>
       </div>
     </section>
@@ -97,7 +97,7 @@
               </div>
             </div>
 
-            <div class="filter-split">
+            <div class="filter-split filter-split--triple">
               <div>
                 <span class="filter-group__label" id="experienceLabel">Experience:</span>
                 <div class="filter-chips" role="group" aria-labelledby="experienceLabel">
@@ -117,13 +117,25 @@
                   <button type="button" class="filter-chip filter-chip--sage" data-availability="saturday" aria-pressed="false">Saturday</button>
                 </div>
               </div>
+
+              <div>
+                <span class="filter-group__label" id="visitFormatLabel">Visit Format:</span>
+                <div class="filter-chips" role="group" aria-labelledby="visitFormatLabel">
+                  <button type="button" class="filter-chip is-active" data-visit-format="all" aria-pressed="true">All</button>
+                  <button type="button" class="filter-chip" data-visit-format="video" aria-pressed="false">In-Clinic &amp; Video</button>
+                  <button type="button" class="filter-chip" data-visit-format="in-clinic" aria-pressed="false">In-Clinic Only</button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
         <div class="directory-toolbar">
           <p class="directory-count" id="doctorResultsCount" aria-live="polite">Showing 6 of 6 Doctors</p>
-          <button type="button" class="btn-reset" id="resetDoctorFilters" disabled>Reset Filters</button>
+          <div class="directory-toolbar__actions">
+            <a class="chart-panel__action" href="doctorprofile.html?compare=1">Compare Fees &rarr;</a>
+            <button type="button" class="btn-reset" id="resetDoctorFilters" disabled>Reset Filters</button>
+          </div>
         </div>
 
         <div class="doctors-grid" id="doctorGrid"></div>

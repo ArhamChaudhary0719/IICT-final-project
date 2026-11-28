@@ -68,7 +68,9 @@ a:hover {
 }
 
 button,
-input {
+input,
+select,
+textarea {
   font: inherit;
   color: inherit;
 }
@@ -376,6 +378,36 @@ input {
   background: var(--color-sage-light);
 }
 
+.search-result-item__doctor {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.search-result-thumb,
+.search-result-initials {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.search-result-thumb {
+  object-fit: cover;
+  object-position: center top;
+  border: 1.5px solid var(--color-border);
+}
+
+.search-result-initials {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-navy);
+  color: #ffffff;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
 .search-result-footer {
   display: flex;
   justify-content: space-between;
@@ -419,6 +451,22 @@ input {
   background: var(--color-sage-dark);
   color: #ffffff;
   transform: translateY(-1px);
+}
+
+.hero-quick-btn--outline {
+  background: var(--color-surface);
+  color: var(--color-navy);
+  border: 1.5px solid var(--color-navy);
+}
+
+.hero-quick-btn--outline:hover {
+  background: var(--color-navy);
+  color: #ffffff;
+}
+
+.chart-panel__action--navy {
+  background: var(--color-navy-soft);
+  border-color: var(--color-navy);
 }
 
 .hero-quick-chip {
@@ -786,8 +834,12 @@ input {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1.25rem;
-  padding-top: 0.25rem;
+  padding-top: 0.75rem;
   border-top: 1px solid var(--color-border);
+}
+
+.filter-split--triple {
+  grid-template-columns: repeat(3, 1fr);
 }
 
 .filter-group__label {
@@ -842,6 +894,13 @@ input {
   align-items: center;
   gap: 0.75rem;
   margin: 1.65rem 0 1.1rem;
+}
+
+.directory-toolbar__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem;
 }
 
 .directory-count {
@@ -910,8 +969,8 @@ input {
 }
 
 .doctor-card__avatar {
-  width: 52px;
-  height: 52px;
+  width: 56px;
+  height: 56px;
   border-radius: var(--radius-md);
   background: linear-gradient(135deg, var(--color-navy), var(--color-sage-dark));
   color: #ffffff;
@@ -921,6 +980,19 @@ input {
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  overflow: hidden;
+}
+
+.doctor-card__avatar--photo {
+  background: var(--color-sage-light);
+  border: 2px solid var(--color-border);
+}
+
+.doctor-card__avatar--photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
 }
 
 .doctor-card__name {
@@ -1144,10 +1216,801 @@ input {
 }
 
 /* ==========================================================================
+   Doctor Profile Page (Prototype Layout in Sage Green & Navy Blue)
+   ========================================================================== */
+.profile-topbar-section {
+  background: linear-gradient(135deg, var(--color-sage-light) 0%, var(--color-bg) 60%, var(--color-navy-soft) 100%);
+  border-bottom: 2px solid var(--color-border);
+  padding: 1.05rem 0;
+}
+
+.profile-topbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-weight: 700;
+  font-size: 0.94rem;
+  color: var(--color-navy);
+  padding: 0.42rem 0.85rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-surface);
+  border: 1.5px solid var(--color-border);
+  transition: background-color 0.16s ease, border-color 0.16s ease;
+}
+
+.back-link:hover {
+  background: var(--color-navy);
+  border-color: var(--color-navy);
+  color: #ffffff;
+}
+
+.physician-switcher {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+}
+
+.physician-switcher__label {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--color-navy);
+}
+
+.physician-select {
+  min-width: 240px;
+  padding: 0.48rem 0.85rem;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--color-navy);
+  background: var(--color-surface);
+  color: var(--color-navy);
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.profile-section {
+  padding-top: 2rem;
+}
+
+.profile-grid {
+  display: grid;
+  grid-template-columns: 330px 1fr;
+  gap: 1.75rem;
+  align-items: start;
+}
+
+/* Left Column: Portrait Card + Biography */
+.profile-sidebar {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.profile-photo-card {
+  background: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-top: 5px solid var(--color-navy);
+  border-radius: var(--radius-lg);
+  padding: 1rem;
+  box-shadow: var(--shadow-md);
+}
+
+.portrait-frame {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.portrait-frame__top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.portrait-dept-tag {
+  padding: 0.24rem 0.65rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-navy-soft);
+  color: var(--color-navy);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.portrait-status {
+  padding: 0.24rem 0.65rem;
+  border-radius: var(--radius-pill);
+  background: #eef1f5;
+  color: var(--color-text-muted);
+  font-size: 0.76rem;
+  font-weight: 700;
+}
+
+.portrait-status--today {
+  background: var(--color-sage-light);
+  color: var(--color-sage-dark);
+}
+
+.portrait-svg {
+  width: 100%;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+}
+
+.portrait-photo-wrap {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1.5px solid var(--color-border);
+  background: var(--color-sage-light);
+}
+
+.portrait-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.portrait-frame__caption {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.5rem;
+  padding-top: 0.2rem;
+  font-size: 0.84rem;
+  color: var(--color-text-muted);
+}
+
+.portrait-frame__caption strong {
+  color: var(--color-navy);
+  font-size: 0.94rem;
+}
+
+.profile-bio-card {
+  background: var(--color-surface);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 1.35rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.profile-section-heading {
+  margin: 0 0 0.7rem;
+  font-size: 1.1rem;
+  color: var(--color-navy);
+}
+
+.profile-bio-text {
+  margin: 0 0 1rem;
+  font-size: 0.92rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+.profile-edu-block {
+  border-top: 1px solid var(--color-border);
+  padding-top: 0.9rem;
+}
+
+.profile-subheading {
+  margin: 0 0 0.5rem;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-sage-dark);
+}
+
+.profile-edu-list {
+  margin: 0;
+  padding-left: 1.1rem;
+  display: grid;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  color: var(--color-text);
+}
+
+/* Right Column: Short Intro | Name & Qualifications | Details | 3 Metrics | Actions */
+.profile-main {
+  display: grid;
+  gap: 1.15rem;
+  min-width: 0;
+}
+
+.profile-intro-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.85rem 1.1rem;
+  background: var(--color-sage-light);
+  border: 1.5px solid var(--color-border);
+  border-left: 5px solid var(--color-sage-dark);
+  border-radius: var(--radius-md);
+}
+
+.profile-intro-bar__tag {
+  padding: 0.25rem 0.7rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-navy);
+  color: #ffffff;
+  font-size: 0.78rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.profile-intro-bar__text {
+  margin: 0;
+  font-size: 0.94rem;
+  color: var(--color-navy);
+  font-weight: 600;
+  flex: 1;
+  min-width: 200px;
+}
+
+.profile-header-card {
+  background: var(--color-surface);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 1.35rem 1.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.profile-name {
+  margin: 0;
+  font-size: clamp(1.65rem, 3vw, 2.2rem);
+  line-height: 1.18;
+  color: var(--color-navy);
+}
+
+.profile-qualifications {
+  margin: 0.25rem 0 0.9rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-sage-dark);
+}
+
+.profile-highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.profile-highlight-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0.8rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-navy-soft);
+  color: var(--color-navy);
+  font-size: 0.84rem;
+  font-weight: 600;
+}
+
+.profile-details-card {
+  background: var(--color-surface);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 1.35rem 1.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.profile-details-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem 1.25rem;
+}
+
+.profile-detail-item strong {
+  display: block;
+  margin-bottom: 0.22rem;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-sage-dark);
+}
+
+.profile-detail-item span {
+  font-size: 0.92rem;
+  color: var(--color-text);
+  line-height: 1.5;
+}
+
+.profile-focus-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+/* 3 Side-by-Side Metric Boxes */
+.profile-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.profile-metric-box {
+  background: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-top: 4px solid var(--color-navy);
+  border-radius: var(--radius-md);
+  padding: 1.1rem 1.15rem;
+  box-shadow: var(--shadow-sm);
+  display: grid;
+  gap: 0.28rem;
+  text-align: center;
+}
+
+.profile-metric-box--sage {
+  background: var(--color-sage-tint);
+  border-top-color: var(--color-sage-dark);
+}
+
+.profile-metric-box__label {
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-text-muted);
+}
+
+.profile-metric-box__value {
+  font-size: 1.35rem;
+  line-height: 1.25;
+  color: var(--color-navy);
+}
+
+.profile-metric-box__sub {
+  font-size: 0.8rem;
+  color: var(--color-sage-dark);
+  font-weight: 600;
+}
+
+/* Bottom Action Row: Book Appointment (Left) | Compare fee (Right) */
+.profile-actions-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.25rem 0;
+}
+
+.btn-book-appointment {
+  padding: 0.85rem 2rem;
+  font-size: 1rem;
+  border: 0;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-compare-fee {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.65rem 1.2rem;
+  border: 1.5px solid var(--color-navy);
+  border-radius: var(--radius-pill);
+  background: var(--color-surface);
+  color: var(--color-navy);
+  font-weight: 700;
+  font-size: 0.92rem;
+  cursor: pointer;
+  transition: background-color 0.16s ease, color 0.16s ease;
+}
+
+.btn-compare-fee:hover {
+  background: var(--color-sage-light);
+  border-color: var(--color-sage-dark);
+  color: var(--color-navy-dark);
+}
+
+/* Patient Reviews Strip */
+.profile-reviews-card {
+  background: var(--color-surface);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem 1.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.profile-reviews-card__head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.9rem;
+}
+
+.profile-reviews-score {
+  padding: 0.26rem 0.7rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-sage-light);
+  color: var(--color-sage-dark);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.profile-reviews-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.9rem;
+}
+
+.profile-review-item {
+  margin: 0;
+  padding: 0.9rem 1rem;
+  background: var(--color-sage-tint);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.profile-review-item p {
+  margin: 0 0 0.45rem;
+  font-size: 0.89rem;
+  color: var(--color-text);
+}
+
+.profile-review-item footer {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--color-navy);
+}
+
+/* ==========================================================================
+   Modals (Book Appointment & Compare Consultation Fees)
+   ========================================================================== */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  background: rgba(15, 32, 59, 0.58);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+}
+
+.modal-backdrop[hidden] {
+  display: none;
+}
+
+.modal-dialog {
+  width: 100%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-top: 5px solid var(--color-navy);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 18px 48px rgba(15, 32, 59, 0.28);
+}
+
+.modal-dialog--wide {
+  max-width: 860px;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.2rem 1.4rem;
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-sage-tint);
+}
+
+.modal-eyebrow {
+  display: block;
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-sage-dark);
+}
+
+.modal-title {
+  margin: 0.15rem 0 0;
+  font-size: 1.3rem;
+  color: var(--color-navy);
+}
+
+.modal-close {
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-navy);
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  font-size: 1.3rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.modal-close:hover {
+  background: var(--color-navy);
+  color: #ffffff;
+}
+
+.modal-body {
+  padding: 1.35rem 1.4rem;
+}
+
+.booking-doctor-summary {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.85rem 1rem;
+  background: var(--color-navy-soft);
+  border-radius: var(--radius-md);
+  margin-bottom: 1.15rem;
+}
+
+.booking-doctor-summary__avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  background: var(--color-navy);
+  color: #ffffff;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.booking-doctor-summary__photo {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-sm);
+  object-fit: cover;
+  object-position: center top;
+  border: 1.5px solid var(--color-border);
+  flex-shrink: 0;
+}
+
+.booking-doctor-summary strong {
+  display: block;
+  color: var(--color-navy);
+}
+
+.booking-doctor-summary span {
+  font-size: 0.84rem;
+  color: var(--color-text-muted);
+}
+
+.booking-form {
+  display: grid;
+  gap: 1rem;
+}
+
+.booking-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.9rem;
+}
+
+.form-field {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.form-field label,
+.form-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-navy);
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+  padding: 0.55rem 0.75rem;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  font-size: 0.92rem;
+}
+
+.slot-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.slot-pill {
+  padding: 0.4rem 0.75rem;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--color-border);
+  background: var(--color-sage-tint);
+  color: var(--color-navy);
+  font-size: 0.83rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.slot-pill.is-selected {
+  background: var(--color-navy);
+  border-color: var(--color-navy);
+  color: #ffffff;
+}
+
+.modal-footer-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.65rem;
+  padding-top: 0.35rem;
+}
+
+.modal-footer-actions .btn-primary,
+.modal-footer-actions .btn-secondary {
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.booking-confirmation {
+  text-align: center;
+  padding: 1rem 0.5rem;
+  display: grid;
+  gap: 0.75rem;
+  justify-items: center;
+}
+
+.booking-confirmation[hidden] {
+  display: none;
+}
+
+.booking-confirmation__badge {
+  display: inline-flex;
+  padding: 0.35rem 0.95rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-sage-light);
+  color: var(--color-sage-dark);
+  font-weight: 700;
+  font-size: 0.88rem;
+}
+
+.booking-confirmation h3 {
+  margin: 0;
+  color: var(--color-navy);
+}
+
+.booking-confirmation p {
+  margin: 0;
+  max-width: 480px;
+  color: var(--color-text-muted);
+  font-size: 0.94rem;
+}
+
+/* Compare Fee Table */
+.compare-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.compare-summary {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+.compare-sort {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: var(--color-navy);
+}
+
+.compare-sort select {
+  padding: 0.38rem 0.7rem;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--color-border);
+  background: var(--color-surface);
+}
+
+.compare-table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.89rem;
+  text-align: left;
+}
+
+.compare-table th {
+  background: var(--color-navy);
+  color: #ffffff;
+  padding: 0.75rem 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.compare-table td {
+  padding: 0.78rem 0.85rem;
+  border-top: 1px solid var(--color-border);
+  vertical-align: middle;
+}
+
+.compare-table tr.is-current-row {
+  background: var(--color-sage-light);
+}
+
+.compare-sub {
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+}
+
+.compare-doctor-cell {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.compare-doctor-thumb,
+.compare-doctor-initials {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.compare-doctor-thumb {
+  object-fit: cover;
+  object-position: center top;
+  border: 1.5px solid var(--color-border);
+}
+
+.compare-doctor-initials {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-navy);
+  color: #ffffff;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.compare-fee-cell {
+  color: var(--color-navy);
+  font-size: 1rem;
+}
+
+.btn-table-select {
+  border: 1px solid transparent;
+  cursor: pointer;
+  white-space: nowrap;
+  padding: 0.42rem 0.75rem;
+  font-size: 0.82rem;
+}
+
+/* ==========================================================================
    Responsive Breakpoints
    ========================================================================== */
 @media (max-width: 960px) {
-  .hero__grid {
+  .hero__grid,
+  .profile-grid {
     grid-template-columns: 1fr;
   }
 
@@ -1156,7 +2019,8 @@ input {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .filter-split {
+  .filter-split,
+  .filter-split--triple {
     grid-template-columns: 1fr;
   }
 
@@ -1202,7 +2066,11 @@ input {
 
   .gallery-grid,
   .doctors-grid,
-  .footer-grid {
+  .footer-grid,
+  .profile-details-grid,
+  .profile-metrics-grid,
+  .profile-reviews-list,
+  .booking-form-row {
     grid-template-columns: 1fr;
   }
 
@@ -1212,5 +2080,9 @@ input {
 
   .chart-bars {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .physician-select {
+    width: 100%;
   }
 }
