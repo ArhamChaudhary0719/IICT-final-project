@@ -1,0 +1,997 @@
+/* ==========================================================================
+   DocEase Clinic - My Appointments Stylesheet
+   Color Scheme: Sage Green & Navy Blue
+   Author: Muhammad Hammad (26i-3100) - Member 4
+   ========================================================================== */
+
+/* 1. Color Variables & Base Reset */
+:root {
+  --navy-dark: #0f203b;
+  --navy-primary: #162d50;
+  --navy-soft: #2c466e;
+
+  --sage-primary: #5f8567;
+  --sage-dark: #486950;
+  --sage-light: #e6efe8;
+  --sage-tint: #f3f7f4;
+  --sage-on-dark: #c5dcc9;
+
+  --bg-page: #f6f9f7;
+  --surface: #ffffff;
+  --border-color: #d3dfd6;
+  --text-main: #0f203b;
+  --text-muted: #475d75;
+
+  --danger-bg: #fdecec;
+  --danger-text: #9b1c1c;
+  --danger-border: #f5bcbc;
+
+  --focus-color: #d97706;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg-page);
+  color: var(--text-main);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 2. Visible Keyboard Focus Outlines (Accessibility) */
+a:focus,
+button:focus,
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 3px solid var(--focus-color);
+  outline-offset: 2px;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--focus-color);
+  outline-offset: 2px;
+}
+
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 1rem;
+  background-color: var(--navy-dark);
+  color: #ffffff;
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  z-index: 1000;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* 3. Layout Helper */
+.container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+/* 4. Header & Responsive Navigation */
+.site-header {
+  background-color: #ffffff;
+  color: var(--navy-primary);
+  border-top: 3px solid var(--sage-primary);
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: 0 2px 8px rgba(15, 32, 59, 0.05);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 74px;
+  gap: 1rem;
+}
+
+.brand-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  color: var(--navy-primary);
+  text-decoration: none;
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+.brand-logo {
+  height: 44px;
+  width: 44px;
+  display: block;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1.5px solid var(--sage-primary);
+  flex-shrink: 0;
+}
+
+.brand-tag {
+  font-weight: 600;
+  color: var(--sage-dark);
+  font-size: 0.95rem;
+}
+
+.main-nav ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.main-nav a {
+  display: inline-block;
+  color: var(--navy-primary);
+  text-decoration: none;
+  padding: 0.5rem 0.95rem;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.main-nav a:hover {
+  background-color: var(--sage-tint);
+  color: var(--sage-dark);
+}
+
+.main-nav a.active {
+  background-color: var(--sage-dark);
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* Hamburger Menu Button (hidden on desktop) */
+.menu-toggle {
+  display: none;
+  background-color: #ffffff;
+  border: 2px solid var(--navy-primary);
+  border-radius: 6px;
+  padding: 0.45rem 0.55rem;
+  cursor: pointer;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.menu-toggle:hover {
+  background-color: var(--sage-tint);
+  border-color: var(--sage-dark);
+}
+
+.menu-bar {
+  display: block;
+  width: 22px;
+  height: 2.5px;
+  background-color: var(--navy-primary);
+  border-radius: 2px;
+}
+
+/* 5. Main Content Area */
+main.container {
+  flex: 1;
+  padding-top: 2rem;
+  padding-bottom: 3rem;
+}
+
+.page-header {
+  margin-bottom: 1.75rem;
+}
+
+.page-header h1 {
+  font-size: 2rem;
+  color: var(--navy-primary);
+  margin-bottom: 0.35rem;
+}
+
+.page-header p {
+  color: var(--text-muted);
+  font-size: 1rem;
+}
+
+/* 6. Search & Filter Controls */
+.controls-bar {
+  background-color: var(--surface);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 1.15rem;
+  margin-bottom: 1.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  box-shadow: 0 2px 6px rgba(16, 42, 67, 0.05);
+}
+
+.search-group {
+  flex: 1 1 260px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.search-group label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--navy-primary);
+}
+
+.search-group input {
+  width: 100%;
+  padding: 0.65rem 0.85rem;
+  border: 1.5px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 0.95rem;
+  color: var(--text-main);
+  background-color: #ffffff;
+}
+
+.search-group input:hover {
+  border-color: var(--sage-primary);
+}
+
+.filter-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.filter-btn {
+  background-color: var(--sage-tint);
+  color: var(--navy-primary);
+  border: 1.5px solid var(--border-color);
+  border-radius: 6px;
+  padding: 0.6rem 1rem;
+  font-size: 0.92rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.filter-btn:hover {
+  background-color: var(--sage-light);
+  border-color: var(--sage-primary);
+}
+
+.filter-btn.active {
+  background-color: var(--navy-primary);
+  color: #ffffff;
+  border-color: var(--navy-primary);
+}
+
+.results-count {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+/* 7. Appointment Cards Grid */
+.appointments-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+  gap: 1.25rem;
+}
+
+.appointment-card {
+  background-color: var(--surface);
+  border: 1px solid var(--border-color);
+  border-top: 4px solid var(--sage-primary);
+  border-radius: 10px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+  box-shadow: 0 2px 8px rgba(16, 42, 67, 0.06);
+}
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.doctor-name {
+  font-size: 1.15rem;
+  color: var(--navy-primary);
+  margin-bottom: 0.15rem;
+}
+
+.doctor-specialty {
+  font-size: 0.9rem;
+  color: var(--sage-dark);
+  font-weight: 600;
+}
+
+.status-badge {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.status-upcoming {
+  background-color: var(--sage-light);
+  color: var(--sage-dark);
+}
+
+.status-completed {
+  background-color: #e6edf5;
+  color: var(--navy-primary);
+}
+
+.status-cancelled {
+  background-color: var(--danger-bg);
+  color: var(--danger-text);
+}
+
+.card-details {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-size: 0.93rem;
+  color: var(--text-main);
+  border-top: 1px solid #edf2ef;
+  padding-top: 0.75rem;
+}
+
+.card-details strong {
+  color: var(--navy-soft);
+}
+
+.card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid #edf2ef;
+}
+
+.action-link {
+  display: inline-block;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.48rem 0.9rem;
+  border-radius: 6px;
+  text-align: center;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.reschedule-link {
+  background-color: var(--sage-primary);
+  color: #ffffff;
+}
+
+.reschedule-link:hover {
+  background-color: var(--sage-dark);
+}
+
+.cancel-link {
+  background-color: #ffffff;
+  color: var(--danger-text);
+  border: 1.5px solid var(--danger-border);
+}
+
+.cancel-link:hover {
+  background-color: var(--danger-bg);
+}
+
+.status-note {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* 8. Empty State Message */
+.empty-state {
+  background-color: var(--surface);
+  border: 1.5px dashed var(--sage-primary);
+  border-radius: 10px;
+  padding: 2.25rem 1.25rem;
+  text-align: center;
+  color: var(--text-muted);
+}
+
+.empty-state h2 {
+  color: var(--navy-primary);
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.empty-state p {
+  margin-bottom: 1rem;
+}
+
+.reset-btn {
+  background-color: var(--navy-primary);
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.6rem 1.15rem;
+  font-size: 0.92rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.reset-btn:hover {
+  background-color: var(--navy-soft);
+}
+
+/* 9. Footer */
+.site-footer {
+  background-color: var(--navy-primary);
+  color: #e6edf5;
+  border-top: 4px solid var(--sage-primary);
+  margin-top: auto;
+}
+
+.footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1.5rem;
+  padding-top: 1.75rem;
+  padding-bottom: 1.5rem;
+}
+
+.footer-brand {
+  max-width: 420px;
+}
+
+.footer-brand-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  margin-bottom: 0.5rem;
+}
+
+.footer-logo {
+  height: 42px;
+  width: 42px;
+  display: block;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1.5px solid var(--sage-primary);
+  flex-shrink: 0;
+}
+
+.footer-brand-tag {
+  font-weight: 500;
+  color: var(--sage-on-dark);
+  font-size: 0.95rem;
+}
+
+.footer-tagline {
+  color: var(--sage-on-dark);
+  font-size: 0.92rem;
+}
+
+.footer-heading {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.55rem;
+}
+
+.footer-nav ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem 1.25rem;
+}
+
+.footer-nav a {
+  color: var(--sage-on-dark);
+  text-decoration: none;
+  font-size: 0.92rem;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.footer-nav a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  background-color: var(--navy-dark);
+  border-top: 1px solid rgba(95, 133, 103, 0.35);
+  padding: 0.95rem 0;
+}
+
+.footer-bottom-inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.88rem;
+  color: #dbe6f2;
+}
+
+.ai-note {
+  background-color: rgba(95, 133, 103, 0.2);
+  border: 1px solid var(--sage-primary);
+  color: var(--sage-on-dark);
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.84rem;
+}
+
+/* 10. Reschedule Appointment Page */
+body.reschedule-page {
+  --focus-color: var(--navy-primary);
+  accent-color: var(--navy-primary);
+}
+
+.reschedule-page a:focus,
+.reschedule-page a:focus-visible,
+.reschedule-page a:active,
+.reschedule-page button:focus,
+.reschedule-page button:focus-visible,
+.reschedule-page button:active,
+.reschedule-page input:focus,
+.reschedule-page input:focus-visible,
+.reschedule-page input:active,
+.reschedule-page select:focus,
+.reschedule-page select:focus-visible,
+.reschedule-page select:active,
+.reschedule-page textarea:focus,
+.reschedule-page textarea:focus-visible,
+.reschedule-page textarea:active {
+  outline: 3px solid var(--navy-primary);
+  outline-offset: 2px;
+}
+
+.reschedule-page .skip-link:focus,
+.reschedule-page .skip-link:focus-visible {
+  outline: 3px solid var(--sage-primary);
+  outline-offset: 2px;
+}
+
+.reschedule-page .site-footer a:focus,
+.reschedule-page .site-footer a:focus-visible,
+.reschedule-page .site-footer a:active {
+  outline: 3px solid var(--sage-on-dark);
+  outline-offset: 2px;
+}
+
+.breadcrumb-row {
+  margin-bottom: 0.75rem;
+}
+
+.back-link {
+  display: inline-block;
+  color: var(--navy-primary);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.94rem;
+}
+
+.back-link:hover {
+  color: var(--sage-dark);
+  text-decoration: underline;
+}
+
+.panel-card {
+  background-color: var(--surface);
+  border: 1px solid var(--border-color);
+  border-top: 4px solid var(--sage-primary);
+  border-radius: 10px;
+  padding: 1.4rem;
+  box-shadow: 0 2px 8px rgba(16, 42, 67, 0.06);
+}
+
+.panel-title {
+  font-size: 1.25rem;
+  color: var(--navy-primary);
+  margin-bottom: 0.25rem;
+}
+
+.panel-subtitle {
+  color: var(--text-muted);
+  font-size: 0.94rem;
+  margin-bottom: 1rem;
+}
+
+.selector-panel {
+  margin-bottom: 1.5rem;
+}
+
+.alert-banner {
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+.alert-error {
+  background-color: #e6edf5;
+  color: var(--navy-primary);
+  border: 1.5px solid var(--navy-soft);
+  border-left: 5px solid var(--navy-primary);
+}
+
+.alert-actions {
+  margin-top: 0.85rem;
+}
+
+.reschedule-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.35fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.detail-summary-list {
+  margin-top: 0.85rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 1.25rem;
+}
+
+.form-group label,
+.field-label {
+  font-size: 0.94rem;
+  font-weight: 600;
+  color: var(--navy-primary);
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.68rem 0.85rem;
+  border: 1.5px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 0.96rem;
+  font-family: inherit;
+  color: var(--text-main);
+  background-color: #ffffff;
+}
+
+.form-control:hover {
+  border-color: var(--sage-dark);
+}
+
+.reschedule-page select.form-control,
+.reschedule-page #appointment-select {
+  border-color: var(--sage-primary);
+}
+
+.reschedule-page select.form-control:hover,
+.reschedule-page #appointment-select:hover {
+  border-color: var(--sage-dark);
+}
+
+.reschedule-page .form-control:focus,
+.reschedule-page .form-control:focus-visible,
+.reschedule-page .form-control:active,
+.reschedule-page #appointment-select:focus,
+.reschedule-page #appointment-select:focus-visible,
+.reschedule-page #appointment-select:active {
+  border-color: var(--navy-primary);
+  outline: 3px solid var(--navy-primary);
+  outline-offset: 2px;
+}
+
+.reschedule-page .slot-btn:focus,
+.reschedule-page .slot-btn:focus-visible,
+.reschedule-page .slot-btn:active {
+  border-color: var(--navy-primary);
+  outline: 3px solid var(--navy-primary);
+  outline-offset: 2px;
+}
+
+.field-hint {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.form-error-box {
+  background-color: var(--sage-light);
+  color: var(--navy-primary);
+  border: 1.5px solid var(--sage-primary);
+  border-left: 5px solid var(--navy-primary);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1.1rem;
+  font-size: 0.93rem;
+  font-weight: 600;
+}
+
+.slots-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.slots-summary {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.slots-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(145px, 1fr));
+  gap: 0.65rem;
+  margin-top: 0.35rem;
+}
+
+.slots-empty-note {
+  grid-column: 1 / -1;
+  background-color: var(--sage-tint);
+  border: 1px dashed var(--border-color);
+  border-radius: 8px;
+  padding: 0.9rem 1rem;
+  color: var(--text-muted);
+  font-size: 0.92rem;
+}
+
+.slot-btn {
+  background-color: var(--sage-tint);
+  color: var(--navy-primary);
+  border: 1.5px solid var(--border-color);
+  border-radius: 6px;
+  padding: 0.62rem 0.75rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.slot-btn:hover:not(.slot-unavailable) {
+  background-color: var(--sage-light);
+  border-color: var(--sage-primary);
+}
+
+.slot-btn.selected {
+  background-color: var(--navy-primary);
+  color: #ffffff;
+  border-color: var(--navy-primary);
+}
+
+.slot-btn.slot-unavailable {
+  background-color: #e6edf5;
+  color: var(--navy-soft);
+  border-color: #c2cfde;
+  cursor: pointer;
+  text-decoration: line-through;
+  opacity: 0.9;
+}
+
+.slot-btn.slot-unavailable:hover {
+  background-color: #dbe5f0;
+  border-color: var(--navy-soft);
+}
+
+.slots-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 0.65rem;
+  font-size: 0.84rem;
+  color: var(--text-muted);
+}
+
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.legend-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  display: inline-block;
+  border: 1px solid var(--border-color);
+}
+
+.dot-available {
+  background-color: var(--sage-tint);
+  border-color: var(--sage-primary);
+}
+
+.dot-selected {
+  background-color: var(--navy-primary);
+  border-color: var(--navy-primary);
+}
+
+.dot-booked {
+  background-color: #e6edf5;
+  border-color: #c2cfde;
+}
+
+.slot-message-box {
+  background-color: var(--sage-tint);
+  color: var(--navy-primary);
+  border: 1.5px solid var(--navy-primary);
+  border-left: 5px solid var(--sage-dark);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  margin-top: 0.75rem;
+  font-size: 0.93rem;
+  font-weight: 600;
+}
+
+.form-actions,
+.confirmation-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+
+.primary-btn,
+.secondary-btn {
+  display: inline-block;
+  text-decoration: none;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 0.65rem 1.25rem;
+  border-radius: 6px;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
+}
+
+.primary-btn {
+  background-color: var(--sage-primary);
+  color: #ffffff;
+  border: 1.5px solid var(--sage-primary);
+}
+
+.primary-btn:hover:not(:disabled) {
+  background-color: var(--sage-dark);
+  border-color: var(--sage-dark);
+}
+
+.primary-btn:disabled {
+  background-color: #9cb5a1;
+  border-color: #9cb5a1;
+  color: #ffffff;
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.secondary-btn {
+  background-color: #ffffff;
+  color: var(--navy-primary);
+  border: 1.5px solid var(--border-color);
+}
+
+.secondary-btn:hover {
+  background-color: var(--sage-tint);
+  border-color: var(--sage-primary);
+}
+
+.confirmation-card {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.confirmation-badge {
+  display: inline-block;
+  background-color: var(--sage-light);
+  color: var(--sage-dark);
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  padding: 0.25rem 0.7rem;
+  border-radius: 999px;
+  margin-bottom: 0.65rem;
+}
+
+.confirmation-card h2 {
+  color: var(--navy-primary);
+  font-size: 1.45rem;
+  margin-bottom: 0.35rem;
+}
+
+/* 11. Mobile Responsive Rules */
+@media (max-width: 768px) {
+  .header-inner {
+    flex-wrap: wrap;
+    padding-top: 0.65rem;
+    padding-bottom: 0.65rem;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  .main-nav {
+    display: none;
+    width: 100%;
+    padding-top: 0.65rem;
+    border-top: 1px solid var(--border-color);
+  }
+
+  .main-nav.open {
+    display: block;
+  }
+
+  .main-nav ul {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.35rem;
+  }
+
+  .main-nav a {
+    display: block;
+    width: 100%;
+  }
+
+  .page-header h1 {
+    font-size: 1.65rem;
+  }
+
+  .appointments-grid,
+  .reschedule-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .slots-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer-inner,
+  .footer-bottom-inner {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-nav ul {
+    justify-content: center;
+  }
+}

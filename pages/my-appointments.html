@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Appointments | DocEase Clinic</title>
+  <link rel="stylesheet" href="../css/appointments.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../index.html" class="brand-link">
+        <img
+          src="../images/docease-logo.png"
+          alt="DocEase Clinic logo"
+          class="brand-logo"
+        >
+        <span>DocEase <span class="brand-tag">Clinic</span></span>
+      </a>
+
+      <button
+        type="button"
+        id="menu-toggle"
+        class="menu-toggle"
+        aria-expanded="false"
+        aria-controls="nav-menu"
+        aria-label="Toggle navigation menu"
+      >
+        <span class="menu-bar"></span>
+        <span class="menu-bar"></span>
+        <span class="menu-bar"></span>
+      </button>
+
+      <nav id="nav-menu" class="main-nav" aria-label="Primary Navigation">
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="doctors.html">Doctors</a></li>
+          <li><a href="book-appointment.html">Book Appointment</a></li>
+          <li><a href="my-appointments.html" class="active" aria-current="page">My Appointments</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content" class="container">
+    <section class="page-header">
+      <h1>My Appointments</h1>
+      <p>View, search, and manage your upcoming, completed, and cancelled clinic visits.</p>
+    </section>
+
+    <section class="controls-bar" aria-label="Search and filter appointments">
+      <div class="search-group">
+        <label for="search-input">Search Appointments</label>
+        <input
+          type="search"
+          id="search-input"
+          placeholder="Search by doctor, specialty, reason, or date..."
+          autocomplete="off"
+        >
+      </div>
+
+      <div class="filter-tabs" role="group" aria-label="Filter appointments by status">
+        <button type="button" class="filter-btn active" data-status="all" aria-pressed="true">All</button>
+        <button type="button" class="filter-btn" data-status="upcoming" aria-pressed="false">Upcoming</button>
+        <button type="button" class="filter-btn" data-status="completed" aria-pressed="false">Completed</button>
+        <button type="button" class="filter-btn" data-status="cancelled" aria-pressed="false">Cancelled</button>
+      </div>
+    </section>
+
+    <p id="results-count" class="results-count" aria-live="polite"></p>
+
+    <section id="appointments-list" class="appointments-grid" aria-label="Appointments list">
+      <!-- Appointment cards are rendered here by js/appointments.js -->
+    </section>
+
+    <div id="empty-message" class="empty-state" hidden>
+      <h2>No appointments match your search</h2>
+      <p>Try another keyword or switch to a different appointment status tab.</p>
+      <button type="button" id="reset-filters-btn" class="reset-btn">Show All Appointments</button>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a href="../index.html" class="footer-brand-link">
+          <img
+            src="../images/docease-logo.png"
+            alt="DocEase Clinic logo"
+            class="footer-logo"
+          >
+          <span>DocEase <span class="footer-brand-tag">Clinic</span></span>
+        </a>
+        <p class="footer-tagline">Trusted healthcare and simple online appointment management.</p>
+      </div>
+
+      <nav class="footer-nav" aria-label="Footer Navigation">
+        <h2 class="footer-heading">Quick Links</h2>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="doctors.html">Doctors</a></li>
+          <li><a href="book-appointment.html">Book Appointment</a></li>
+          <li><a href="my-appointments.html">My Appointments</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <p>&copy; 2026 DocEase Clinic. All rights reserved.</p>
+        <p class="ai-note">Note: AI-generated images and logo are used in this project.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/appointments.js"></script>
+</body>
+</html>

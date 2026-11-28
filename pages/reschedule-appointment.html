@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reschedule Appointment | DocEase Clinic</title>
+  <link rel="stylesheet" href="../css/appointments.css">
+</head>
+<body class="reschedule-page">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../index.html" class="brand-link">
+        <img
+          src="../images/docease-logo.png"
+          alt="DocEase Clinic logo"
+          class="brand-logo"
+        >
+        <span>DocEase <span class="brand-tag">Clinic</span></span>
+      </a>
+
+      <button
+        type="button"
+        id="menu-toggle"
+        class="menu-toggle"
+        aria-expanded="false"
+        aria-controls="nav-menu"
+        aria-label="Toggle navigation menu"
+      >
+        <span class="menu-bar"></span>
+        <span class="menu-bar"></span>
+        <span class="menu-bar"></span>
+      </button>
+
+      <nav id="nav-menu" class="main-nav" aria-label="Primary Navigation">
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="doctors.html">Doctors</a></li>
+          <li><a href="book-appointment.html">Book Appointment</a></li>
+          <li><a href="my-appointments.html" class="active">My Appointments</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content" class="container">
+    <div class="breadcrumb-row">
+      <a href="my-appointments.html" class="back-link">&larr; Back to My Appointments</a>
+    </div>
+
+    <section class="page-header">
+      <h1>Reschedule Appointment</h1>
+      <p>Choose a new future date and an available clinic time slot for your upcoming visit.</p>
+    </section>
+
+    <!-- Error / Status Alert Banner -->
+    <div id="page-alert" class="alert-banner alert-error" role="alert" aria-live="polite" hidden>
+      <p id="page-alert-message"></p>
+      <div id="page-alert-actions" class="alert-actions" hidden>
+        <a href="my-appointments.html" class="action-link reschedule-link">Back to My Appointments</a>
+      </div>
+    </div>
+
+    <!-- Direct-access Appointment Selector -->
+    <section id="selector-section" class="panel-card selector-panel" aria-labelledby="selector-heading" hidden>
+      <h2 id="selector-heading" class="panel-title">Select an Upcoming Appointment</h2>
+      <p class="panel-subtitle">Choose which upcoming visit you would like to reschedule.</p>
+      <div class="form-group">
+        <label for="appointment-select">Upcoming Appointment</label>
+        <select id="appointment-select" class="form-control">
+          <option value="">-- Choose an upcoming appointment --</option>
+        </select>
+      </div>
+    </section>
+
+    <!-- Main Two-Column Reschedule Workspace -->
+    <section id="reschedule-workspace" class="reschedule-layout" hidden>
+      <!-- Current Booking Details -->
+      <article class="panel-card current-details-card" aria-labelledby="current-details-heading">
+        <div class="card-top">
+          <div>
+            <h2 id="current-details-heading" class="panel-title">Current Booking Details</h2>
+            <p class="panel-subtitle">Review your existing visit before confirming changes.</p>
+          </div>
+          <span id="current-status-badge" class="status-badge status-upcoming">Upcoming</span>
+        </div>
+
+        <ul id="current-booking-list" class="card-details detail-summary-list">
+          <!-- Populated by js/reschedule.js -->
+        </ul>
+      </article>
+
+      <!-- Reschedule Form -->
+      <form id="reschedule-form" class="panel-card reschedule-form-card" novalidate>
+        <h2 class="panel-title">Select New Date &amp; Time</h2>
+        <p class="panel-subtitle">Choose a future date and pick an available time slot.</p>
+
+        <div id="form-error" class="form-error-box" role="alert" aria-live="polite" hidden></div>
+
+        <div class="form-group">
+          <label for="new-date">New Appointment Date</label>
+          <input
+            type="date"
+            id="new-date"
+            name="newDate"
+            class="form-control"
+            required
+          >
+          <p class="field-hint">Select any future date starting tomorrow.</p>
+        </div>
+
+        <div class="form-group">
+          <div class="slots-header">
+            <span id="slots-label" class="field-label">Available Time Slots</span>
+            <span id="slots-summary" class="slots-summary">Pick a future date to view slots</span>
+          </div>
+
+          <div
+            id="time-slots-grid"
+            class="slots-grid"
+            role="group"
+            aria-labelledby="slots-label"
+          >
+            <!-- Time slot buttons rendered by js/reschedule.js -->
+          </div>
+
+          <div class="slots-legend" aria-label="Time slot availability legend">
+            <span class="legend-item"><span class="legend-dot dot-available"></span> Available</span>
+            <span class="legend-item"><span class="legend-dot dot-selected"></span> Selected</span>
+            <span class="legend-item"><span class="legend-dot dot-booked"></span> Booked / Unavailable</span>
+          </div>
+
+          <div id="slot-message" class="slot-message-box" role="status" aria-live="polite" hidden></div>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" id="confirm-reschedule-btn" class="primary-btn" disabled>
+            Confirm Reschedule
+          </button>
+          <a href="my-appointments.html" class="secondary-btn">Cancel</a>
+        </div>
+      </form>
+    </section>
+
+    <!-- Success Confirmation Panel -->
+    <section id="confirmation-section" class="panel-card confirmation-card" aria-live="polite" hidden>
+      <div class="confirmation-badge">Rescheduled</div>
+      <h2>Appointment Rescheduled Successfully</h2>
+      <p id="confirmation-intro" class="panel-subtitle">
+        Your appointment has been updated and saved.
+      </p>
+
+      <ul id="confirmation-details" class="card-details detail-summary-list">
+        <!-- Updated details rendered by js/reschedule.js -->
+      </ul>
+
+      <div class="confirmation-actions">
+        <a href="my-appointments.html" class="primary-btn">Back to My Appointments</a>
+        <button type="button" id="reschedule-another-btn" class="secondary-btn" hidden>
+          Reschedule Another Appointment
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a href="../index.html" class="footer-brand-link">
+          <img
+            src="../images/docease-logo.png"
+            alt="DocEase Clinic logo"
+            class="footer-logo"
+          >
+          <span>DocEase <span class="footer-brand-tag">Clinic</span></span>
+        </a>
+        <p class="footer-tagline">Trusted healthcare and simple online appointment management.</p>
+      </div>
+
+      <nav class="footer-nav" aria-label="Footer Navigation">
+        <h2 class="footer-heading">Quick Links</h2>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="doctors.html">Doctors</a></li>
+          <li><a href="book-appointment.html">Book Appointment</a></li>
+          <li><a href="my-appointments.html">My Appointments</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <p>&copy; 2026 DocEase Clinic. All rights reserved.</p>
+        <p class="ai-note">Note: AI-generated images and logo are used in this project.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/appointments.js"></script>
+  <script src="../js/reschedule.js"></script>
+</body>
+</html>
