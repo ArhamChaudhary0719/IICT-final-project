@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Patient Dashboard — HealthCare+ Patient Portal</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230f3d4c'/%3E%3Cpath d='M16 7v18M7 16h18' stroke='%23ffffff' stroke-width='3.2' stroke-linecap='round'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+  <link rel="stylesheet" href="css/tokens.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/pages.css" />
+</head>
+<body>
+  <a class="skip-link" href="#dashboard-main">Skip to main content</a>
+
+  <div class="prototype-bar" role="note">
+    Interactive Prototype — Fictional patient and appointment data stored locally in your browser.
+  </div>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="dashboard.html" class="brand-link" aria-label="HealthCare+ Patient Portal Home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2v20M2 12h20" />
+          </svg>
+        </span>
+        <span class="brand-text">
+          <span class="brand-name">HealthCare+</span>
+          <span class="brand-sub">Better Care. Healthier You.</span>
+        </span>
+      </a>
+
+      <nav class="main-nav" aria-label="Primary navigation">
+        <a href="dashboard.html" class="nav-link is-active" aria-current="page">Dashboard</a>
+        <button type="button" id="nav-appointments-btn" class="nav-link">My Appointments</button>
+        <a href="profile.html" class="nav-link">My Profile</a>
+      </nav>
+
+      <div class="header-actions">
+        <div class="profile-menu">
+          <button
+            type="button"
+            id="profile-menu-trigger"
+            class="profile-trigger"
+            aria-haspopup="true"
+            aria-expanded="false"
+            aria-controls="profile-menu-panel"
+          >
+            <span class="avatar avatar-sm" data-user-avatar aria-hidden="true">SJ</span>
+            <span class="profile-trigger-name" data-user-name>Patient</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <polyline points="6 9 12 15 18 9" />
+            </svg>
+          </button>
+
+          <div id="profile-menu-panel" class="dropdown-panel" hidden>
+            <div class="dropdown-header">
+              <div class="dropdown-name" data-user-name>Patient</div>
+              <div class="dropdown-meta">ID: <span data-user-id>HC-2025041</span></div>
+            </div>
+            <a href="profile.html" class="dropdown-item">My Profile</a>
+            <button type="button" class="dropdown-item dropdown-item--danger" data-action="logout">
+              Sign Out
+            </button>
+          </div>
+        </div>
+
+        <button type="button" class="btn btn-secondary btn-sm header-logout-btn" data-action="logout">
+          Logout
+        </button>
+
+        <button
+          type="button"
+          id="mobile-menu-btn"
+          class="mobile-menu-btn"
+          aria-label="Toggle navigation menu"
+          aria-expanded="false"
+          aria-controls="mobile-drawer"
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <line x1="3" y1="6" x2="21" y2="6" />
+            <line x1="3" y1="12" x2="21" y2="12" />
+            <line x1="3" y1="18" x2="21" y2="18" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobile-drawer" class="mobile-drawer" aria-label="Mobile navigation">
+      <a href="dashboard.html" class="nav-link is-active" aria-current="page">Dashboard</a>
+      <button type="button" id="mobile-appointments-btn" class="nav-link">My Appointments</button>
+      <a href="profile.html" class="nav-link">My Profile</a>
+      <button type="button" class="nav-link" style="color:var(--color-error-text);" data-action="logout">
+        Logout
+      </button>
+    </div>
+  </header>
+
+  <main id="dashboard-main" class="page-main">
+    <div class="container">
+      <!-- Welcome Banner -->
+      <section class="welcome-banner" aria-labelledby="welcome-heading">
+        <div>
+          <h1 id="welcome-heading" class="welcome-title">Welcome back, <span data-user-name>Patient</span></h1>
+          <p id="welcome-subtitle" class="welcome-message">
+            Here's your health overview.
+          </p>
+        </div>
+        <div class="welcome-meta">
+          <span class="badge badge-info">Patient ID: <span data-user-id>HC-2025041</span></span>
+          <span id="welcome-last-login" style="font-size:var(--text-xs); color:var(--color-text-muted);"></span>
+        </div>
+      </section>
+
+      <div class="dashboard-grid">
+        <!-- Left Column: Upcoming Appointments & Recent Activity -->
+        <div>
+          <section class="card section-block" aria-labelledby="appointments-heading">
+            <div class="card-header">
+              <div>
+                <h2 id="appointments-heading" class="card-title">Upcoming Appointments</h2>
+                <p class="card-subtitle">Your scheduled hospital visits for this prototype</p>
+              </div>
+              <button type="button" id="view-all-link" class="btn btn-ghost btn-sm">View All &rarr;</button>
+            </div>
+
+            <div id="upcoming-appointments-list" class="appointment-list"></div>
+          </section>
+
+          <section class="card section-block" aria-labelledby="activity-heading">
+            <div class="card-header">
+              <div>
+                <h2 id="activity-heading" class="card-title">Recent Activity</h2>
+                <p class="card-subtitle">Updates from your account and visits</p>
+              </div>
+            </div>
+
+            <div id="recent-activity-container"></div>
+          </section>
+        </div>
+
+        <!-- Right Column: Quick Actions -->
+        <aside>
+          <section class="card" aria-labelledby="quick-actions-heading">
+            <div class="card-header">
+              <div>
+                <h2 id="quick-actions-heading" class="card-title">Quick Actions</h2>
+                <p class="card-subtitle">Common tasks to manage your patient account</p>
+              </div>
+            </div>
+
+            <div class="quick-actions-grid">
+              <button type="button" id="action-book-appointment" class="quick-action-card">
+                <span class="quick-action-icon" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                    <line x1="16" y1="2" x2="16" y2="6" />
+                    <line x1="8" y1="2" x2="8" y2="6" />
+                    <line x1="3" y1="10" x2="21" y2="10" />
+                    <line x1="12" y1="14" x2="12" y2="18" />
+                    <line x1="10" y1="16" x2="14" y2="16" />
+                  </svg>
+                </span>
+                <div>
+                  <p class="quick-action-title">Book an Appointment</p>
+                  <p class="quick-action-desc">Request a new clinic visit (Demo)</p>
+                </div>
+              </button>
+
+              <button type="button" id="action-view-appointments" class="quick-action-card">
+                <span class="quick-action-icon" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 11l3 3L22 4" />
+                    <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
+                  </svg>
+                </span>
+                <div>
+                  <p class="quick-action-title">View All Appointments</p>
+                  <p class="quick-action-desc">Review upcoming &amp; past visits</p>
+                </div>
+              </button>
+
+              <a href="profile.html" id="action-edit-profile" class="quick-action-card">
+                <span class="quick-action-icon" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                    <circle cx="12" cy="7" r="4" />
+                  </svg>
+                </span>
+                <div>
+                  <p class="quick-action-title">Edit My Profile</p>
+                  <p class="quick-action-desc">Update personal &amp; contact info</p>
+                </div>
+              </a>
+
+              <button type="button" id="action-contact-support" class="quick-action-card">
+                <span class="quick-action-icon" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                  </svg>
+                </span>
+                <div>
+                  <p class="quick-action-title">Contact Support</p>
+                  <p class="quick-action-desc">Ask a non-urgent question</p>
+                </div>
+              </button>
+            </div>
+          </section>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>HealthCare+ — Patient Account Module Prototype</span>
+      <span>Simulated portal • Do not enter real clinical information</span>
+    </div>
+  </footer>
+
+  <script src="js/store.js" defer></script>
+  <script src="js/ui.js" defer></script>
+  <script src="js/dashboard.js" defer></script>
+</body>
+</html>

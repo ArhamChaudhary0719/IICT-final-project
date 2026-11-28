@@ -1,0 +1,91 @@
+/* ==========================================================================
+   Harborview Health — Patient Account Module Design Tokens
+   Calm, WCAG AA accessible palette, typography, spacing, and elevation.
+   ========================================================================== */
+
+:root {
+  /* Brand & Primary Palette */
+  --color-primary: #0f3d4c;         /* Deep Navy-Teal */
+  --color-primary-hover: #0a2b36;   /* Darker Navy-Teal for hover/active */
+  --color-primary-soft: #e9f2f5;    /* Subtle tinted surface */
+  --color-accent: #1a6b7c;          /* Calm Teal for links & focus */
+  --color-accent-hover: #145563;
+
+  /* Semantic States (WCAG AA checked against surfaces) */
+  --color-success-bg: #e7f4ee;      /* Soft Mint */
+  --color-success-border: #a7d7be;
+  --color-success-text: #135e3a;
+
+  --color-warning-bg: #fef7e6;      /* Soft Warm Amber */
+  --color-warning-border: #efd28c;
+  --color-warning-text: #7c4a00;
+
+  --color-info-bg: #eaf3f8;         /* Soft Slate-Blue */
+  --color-info-border: #b6d3e3;
+  --color-info-text: #144d66;
+
+  --color-error-bg: #fdf2f2;        /* Calm Clinical Red */
+  --color-error-border: #efb8b8;
+  --color-error-text: #a91e1e;
+
+  /* Neutrals */
+  --color-bg: #f6f8f9;              /* Page canvas */
+  --color-surface: #ffffff;         /* Cards & inputs */
+  --color-surface-muted: #f0f4f6;   /* Subtle nested containers */
+  --color-border: #d8e1e6;          /* Card & divider borders */
+  --color-border-strong: #b6c5cd;   /* Input borders */
+
+  --color-text: #13262f;            /* Primary copy */
+  --color-text-secondary: #415761;  /* Subtitles & labels */
+  --color-text-muted: #546a74;      /* Captions & timestamps (>= 4.5:1 on white) */
+
+  /* Typography */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen, Ubuntu, Cantarell, sans-serif;
+
+  --text-xs: 0.75rem;      /* 12px */
+  --text-sm: 0.875rem;     /* 14px */
+  --text-base: 0.9375rem;  /* 15px */
+  --text-md: 1rem;         /* 16px */
+  --text-lg: 1.125rem;     /* 18px */
+  --text-xl: 1.375rem;     /* 22px */
+  --text-2xl: 1.625rem;    /* 26px */
+
+  --leading-tight: 1.25;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.6;
+
+  /* Spacing Scale (4px / 8px grid) */
+  --space-1: 0.25rem;  /* 4px */
+  --space-2: 0.5rem;   /* 8px */
+  --space-3: 0.75rem;  /* 12px */
+  --space-4: 1rem;     /* 16px */
+  --space-5: 1.25rem;  /* 20px */
+  --space-6: 1.5rem;   /* 24px */
+  --space-8: 2rem;     /* 32px */
+  --space-10: 2.5rem;  /* 40px */
+  --space-12: 3rem;    /* 48px */
+
+  /* Radii */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-full: 9999px;
+
+  /* Shadows (subtle, clean elevation) */
+  --shadow-xs: 0 1px 2px rgba(15, 61, 76, 0.05);
+  --shadow-sm: 0 2px 6px rgba(15, 61, 76, 0.06);
+  --shadow-md: 0 8px 24px rgba(15, 61, 76, 0.10);
+  --shadow-lg: 0 16px 36px rgba(15, 61, 76, 0.14);
+
+  /* Focus Ring */
+  --focus-ring: 0 0 0 3px rgba(26, 107, 124, 0.28);
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-base: 220ms ease;
+
+  /* Layout */
+  --container-max: 1120px;
+  --header-height: 68px;
+}
